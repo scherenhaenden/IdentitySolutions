@@ -39,6 +39,12 @@ public class UnitOfWork: IUnitOfWork
     public IRepository<ScopeCompact> ScopeCompact { get; set; }
     public IRepository<User> User { get; set; }
     public IRepository<UserCompact> UserCompact { get; set; }
+    public bool Save()
+    {
+        var result = _context.SaveChanges();
+        return true;
+    }
+
     public void Dispose()
     {
         _context.Dispose();

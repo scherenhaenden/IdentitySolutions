@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using IdentityService.DataAccess.Database.Core.BaseDomain;
 using IdentityService.DataAccess.Database.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -48,5 +49,20 @@ public class Repository<TEntity> :IRepository<TEntity> where TEntity : BaseEntit
     public Task RemoveAsync(TEntity entity, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
+    }
+
+    public TEntity? SingleOrDefault(Expression<Func<TEntity, bool>> predicate)
+    {
+       
+
+        
+        
+        
+        return Entity.SingleOrDefault(predicate);
+    }
+
+    public IEnumerable<TEntity>? Where(Expression<Func<TEntity, bool>> predicate)
+    {
+        return Entity.Where(predicate);
     }
 }

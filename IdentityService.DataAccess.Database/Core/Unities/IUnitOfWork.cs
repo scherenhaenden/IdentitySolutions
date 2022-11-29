@@ -19,4 +19,6 @@ public interface IUnitOfWork: IDisposable
     public IRepository<User> User { get; set; }
 
     public IRepository<UserCompact> UserCompact { get; set; }
+    
+    public bool Save();
 }

@@ -6,7 +6,7 @@ namespace IdentityService.DataAccess.Database.Core.Configuration;
 public interface IContext
 {
     // Add all the fields from the name space IdentityService.DataAccess.Database.Core.Domain
-    public DbSet<ClaimBase> Claims { get; set; }
+    public DbSet<Claim> Claims { get; set; }
     public DbSet<LoginInformation> LoginInformation { get; set; }
     
     public DbSet<LoginType> LoginType { get; set; }

@@ -1,3 +1,6 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace IdentityService.DataAccess.Database.Core.BaseDomain;
 
 public interface IBaseEntity
@@ -10,6 +13,8 @@ public interface IBaseEntity
 
 public class BaseEntity : IBaseEntity
 {
+    [Key]
+    [DatabaseGenerated (DatabaseGeneratedOption.Identity)]
     public Guid Guid { get; set; }
     public DateTime InsertedDate { get; set; }
     public DateTime UpdatedDate { get; set; }

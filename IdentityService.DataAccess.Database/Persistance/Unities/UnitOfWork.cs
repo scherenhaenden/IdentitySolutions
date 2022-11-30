@@ -14,7 +14,7 @@ public class UnitOfWork: IUnitOfWork
     public UnitOfWork(IdentityContext context)
     {
         _context = context;
-        Claims = InitObjects<Claim>();
+        Claims = InitObjects<ClaimDbModel>();
         LoginInformation = InitObjects<LoginInformation>();
         LoginType = InitObjects<LoginType>();
         Organization = InitObjects<Organization>();
@@ -31,7 +31,7 @@ public class UnitOfWork: IUnitOfWork
         return  new Repository<T>(_context);
     }
 
-    public IRepository<Claim> Claims { get; set; }
+    public IRepository<ClaimDbModel> Claims { get; set; }
     public IRepository<LoginInformation> LoginInformation { get; set; }
     public IRepository<LoginType> LoginType { get; set; }
     public IRepository<Organization> Organization { get; set; }

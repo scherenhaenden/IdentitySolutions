@@ -5,7 +5,7 @@ namespace IdentityService.DataAccess.Database.Core.Unities;
 
 public interface IUnitOfWork: IDisposable
 {
-    public IRepository<Claim> Claims { get; set; }
+    public IRepository<ClaimDbModel> Claims { get; set; }
     public IRepository<LoginInformation> LoginInformation { get; set; }
 
     public IRepository<LoginType> LoginType { get; set; }

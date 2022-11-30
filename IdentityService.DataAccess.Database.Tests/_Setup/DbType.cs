@@ -18,12 +18,24 @@ public interface IGetDbConnection
 
 public class GetDbConnectionSqlite: IGetDbConnection
 {
+    private readonly string _databaseName;
     private string _currentDirectory = Directory.GetCurrentDirectory();
+    
+
+    public GetDbConnectionSqlite()
+    {
+        _databaseName = "Test.db";
+    }
+    
+    public GetDbConnectionSqlite(string databaseName)
+    {
+        _databaseName = databaseName;
+    }
 
     public void Init()
     {
         // check if file exists and if exists delete it
-        var path = Path.Combine(_currentDirectory, "Test.db");
+        var path = Path.Combine(_currentDirectory, _databaseName);
         if (File.Exists(path))
         {
             File.Delete(path);
@@ -33,7 +45,7 @@ public class GetDbConnectionSqlite: IGetDbConnection
     public IdentityContext GetConnection()
     {
         // Get Path to Database
-        var path = Path.Combine(_currentDirectory, "Test.db");
+        var path = Path.Combine(_currentDirectory,_databaseName);
         
         
         var options = new DbContextOptionsBuilder<IdentityContext>()
@@ -46,7 +58,7 @@ public class GetDbConnectionSqlite: IGetDbConnection
 
     public void Destroy()
     {
-        var path = Path.Combine(_currentDirectory, "Test.db");
+        var path = Path.Combine(_currentDirectory, _databaseName);
         
         // delete the database
         File.Delete(path);

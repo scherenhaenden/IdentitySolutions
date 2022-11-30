@@ -2,11 +2,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Net.Mail;
 using IdentityService.DataAccess.Database.Core.BaseDomain;
 using IdentityService.DataAccess.Database.Core.Domain;
+using IdentityService.DataAccess.Database.Persistance.Validation;
 using Microsoft.EntityFrameworkCore;
 
 namespace IdentityService.DataAccess.Database.Persistance.Domain;
 
-///[Index(nameof(Email), IsUnique = true, nameof(Username), IsUnique = true)]
 [Index(nameof(Email), IsUnique = true)]
 [Index(nameof(Username), IsUnique = true)]
 public class UserCompact : BaseEntity, IUserCompact
@@ -32,23 +32,24 @@ public class UserCompact : BaseEntity, IUserCompact
         // Validate email
         try
         {
-            var mailAddress = new MailAddress(Email);
+            _ = new MailAddress(Email);
         }
         catch (Exception)
         {
-            messages.Add("Email is not valid");
+            
+            messages.Add(ModelValidationMessages.EMAIL_IS_NOT_VALID);
         }
         
         // Validate username
         if (Username?.Length < 3)
         {
-            messages.Add("Username must be at least 3 characters long");
+            messages.Add(ModelValidationMessages.USERNAME_IS_NOT_VALID);
         }
         
         // Validate password
         if (Password?.Length < 8)
         {
-            messages.Add("Password must be at least 8 characters long");
+            messages.Add(ModelValidationMessages.PASSWORD_IS_NOT_VALID);
         }
 
         return messages;

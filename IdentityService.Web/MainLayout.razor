@@ -1,5 +1,49 @@
-﻿@inherits LayoutComponentBase
+﻿@using IdentityService.Web.BusinessLogic.Services.Login
+@using IdentityService.Web.BusinessLogic.Services.Init
+@inherits LayoutComponentBase
+@inject NavigationManager Navigation
+@inject ILoginService LoginService
+@inject IInitService InitService
 
 <main>
     @Body
 </main>
+
+@code{ 
+    
+    [CascadingParameter] protected Task<AuthenticationState> AuthStat { get; set; }
+    protected async override Task OnInitializedAsync()
+    {
+
+        if (!InitService.IsDatabaseConnected())
+        {
+            Navigation.NavigateTo("/Installation");
+            return;
+        }
+        
+        
+        if(!LoginService.IsLoggedIn())
+        {
+            Navigation.NavigateTo("/login");
+            return;
+        }
+    /*base.OnInitialized();
+        var user = (await AuthStat).User;
+        if(!user.Identity.IsAuthenticated)
+        {
+            NavigationManager.NavigateTo($"authentication/login?returnUrl={Uri.EscapeDataString(NavigationManager.Uri)}");
+        }*/
+    }
+
+    /*[CascadingParameter] protected Task<AuthenticationState> AuthStat { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        base.OnInitialized();
+        var user = (await AuthStat).User;
+        if(!user.Identity.IsAuthenticated)
+        {
+            NavigationManager.NavigateTo($"authentication/login?returnUrl={Uri.EscapeDataString(NavigationManager.Uri)}");
+        }
+    }*/
+}

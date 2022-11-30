@@ -1,4 +1,7 @@
 @page "/Login"
+@using IdentityService.Web.BusinessLogic.Services.Login
+@inject ILoginService loginService
+@inject NavigationManager Navigation
 
 <section class="hero is-primary is-fullheight">
   <div class="hero-body">
@@ -12,7 +15,7 @@
                 <input value="@model.Username"
                                               @onchange="@((ChangeEventArgs __e) => model.Username = __e.Value.ToString())"
                                               class="input" />
-                                       <ValidationMessage For="@(() => model.Username)" />
+                                       
                 <span class="icon is-small is-left">
                   <i class="fa fa-envelope"></i>
                 </span>
@@ -23,7 +26,7 @@
               <div class="control has-icons-left">
                  <input type="password" class="input" value="@model.Password"
                                                               @onchange="@((ChangeEventArgs __e) => model.Password = __e.Value.ToString())"/>
-                                    <ValidationMessage For="@(() => model.Password)" />
+                                    
                  <span class="icon is-small is-left">
                   <i class="fa fa-lock"></i>
                 </span>
@@ -36,9 +39,10 @@
               </label>
             </div>
             <div class="field">
-              <button class="button is-success">
+              <button class="button is-success" @onclick="() => {OnValidSubmit(); }">
                 Login
               </button>
+              <button class="btn btn-primary" @onclick="OnValidSubmit">Click me</button>
             </div>
           </form>
         </div>
@@ -51,16 +55,26 @@
 
 @code {
     private Models.Account.LoginModel model = new Models.Account.LoginModel();
-    private bool loading = false;
+    private bool loading = false; 
+
     
     private async void OnValidSubmit()
     {
     // reset alerts on submit
         //AlertService.Clear();
+      
+      
+      
 
         loading = true;
         try
         {
+          if (loginService.Login(model.Username, model.Password))
+          {
+            Navigation.NavigateTo("/");
+          }
+          
+          
             /*await AccountService.Login(model);
             var returnUrl = NavigationManager.QueryString("returnUrl") ?? "";
             NavigationManager.NavigateTo(returnUrl);*/

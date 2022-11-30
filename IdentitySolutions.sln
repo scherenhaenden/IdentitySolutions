@@ -1,5 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityService", "IdentityService\IdentityService.csproj", "{96CF9601-4A5D-4E97-932B-D2EF737466B0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityService.DataAccess", "IdentityService.DataAccess\IdentityService.DataAccess.csproj", "{405E1C20-AEA0-4311-AC31-8BCA8DFF1175}"
@@ -15,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityService.DataAccess.Database.Tests", "IdentityService.DataAccess.Database.Tests\IdentityService.DataAccess.Database.Tests.csproj", "{F6ABE397-0CBF-4B20-8019-88BF895E6251}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityService.BusinessLogic", "IdentityService.BusinessLogic\IdentityService.BusinessLogic.csproj", "{E53F0EBD-DC5C-443A-94BE-AA9158823DE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityService.Web.BusinessLogic", "IdentityService.Web.BusinessLogic\IdentityService.Web.BusinessLogic.csproj", "{01B37A53-D92B-4253-A2B0-AA376AE910A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,6 +49,10 @@ Global
 		{E53F0EBD-DC5C-443A-94BE-AA9158823DE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E53F0EBD-DC5C-443A-94BE-AA9158823DE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E53F0EBD-DC5C-443A-94BE-AA9158823DE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01B37A53-D92B-4253-A2B0-AA376AE910A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01B37A53-D92B-4253-A2B0-AA376AE910A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01B37A53-D92B-4253-A2B0-AA376AE910A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01B37A53-D92B-4253-A2B0-AA376AE910A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{96CF9601-4A5D-4E97-932B-D2EF737466B0} = {BC8631B2-939B-44CD-92E5-11481FEC8BE6}
@@ -54,5 +61,6 @@ Global
 		{CB6D1C0D-0BA9-40B5-9BCC-70E3DA73804C} = {BC8631B2-939B-44CD-92E5-11481FEC8BE6}
 		{F6ABE397-0CBF-4B20-8019-88BF895E6251} = {BEA50D58-DEE0-4428-A508-CBA7CCF457CB}
 		{E53F0EBD-DC5C-443A-94BE-AA9158823DE9} = {BC8631B2-939B-44CD-92E5-11481FEC8BE6}
+		{01B37A53-D92B-4253-A2B0-AA376AE910A2} = {BC8631B2-939B-44CD-92E5-11481FEC8BE6}
 	EndGlobalSection
 EndGlobal

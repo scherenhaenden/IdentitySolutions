@@ -1,15 +1,15 @@
 using IdentityService.DataAccess.Database.Core.BaseDomain;
 using IdentityService.DataAccess.Database.Core.Repositories;
 using IdentityService.DataAccess.Database.Core.Unities;
-using IdentityService.DataAccess.Database.Persistance.Configuration;
-using IdentityService.DataAccess.Database.Persistance.Domain;
-using IdentityService.DataAccess.Database.Persistance.Repositories;
+using IdentityService.DataAccess.Database.Persistence.Configuration;
+using IdentityService.DataAccess.Database.Persistence.Domain;
+using IdentityService.DataAccess.Database.Persistence.Repositories;
 
-namespace IdentityService.DataAccess.Database.Persistance.Unities;
+namespace IdentityService.DataAccess.Database.Persistence.Unities;
 
 public class UnitOfWork: IUnitOfWork
 {
-    private IdentityContext _context;
+    private readonly IdentityContext _context;
     
     public UnitOfWork(IdentityContext context)
     {

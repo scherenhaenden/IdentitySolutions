@@ -1,10 +1,7 @@
-using IdentityService.DataAccess.Database.Core.Unities;
-using IdentityService.DataAccess.Database.Persistance.Domain;
-using IdentityService.DataAccess.Database.Persistance.Unities;
-using IdentityService.DataAccess.Database.Persistance.Validation;
+using IdentityService.DataAccess.Database.Persistence.Domain;
+using IdentityService.DataAccess.Database.Persistence.Validation;
 using IdentityService.DataAccess.Database.Tests._Setup;
 using Microsoft.EntityFrameworkCore;
-using NUnit.Framework;
 
 namespace IdentityService.DataAccess.Database.Tests.Domain;
 

@@ -1,7 +1,7 @@
 using IdentityService.DataAccess.Database.Core.BaseDomain;
 using IdentityService.DataAccess.Database.Core.Domain;
 
-namespace IdentityService.DataAccess.Database.Persistance.Domain;
+namespace IdentityService.DataAccess.Database.Persistence.Domain;
 
 public class LoginType :BaseEntity,  ILoginType
 {

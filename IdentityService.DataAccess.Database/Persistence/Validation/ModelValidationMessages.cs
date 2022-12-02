@@ -1,4 +1,4 @@
-namespace IdentityService.DataAccess.Database.Persistance.Validation;
+namespace IdentityService.DataAccess.Database.Persistence.Validation;
 
 public class ModelValidationMessages
 {

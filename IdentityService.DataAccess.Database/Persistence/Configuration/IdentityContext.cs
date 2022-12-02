@@ -1,8 +1,8 @@
 using IdentityService.DataAccess.Database.Core.Configuration;
-using IdentityService.DataAccess.Database.Persistance.Domain;
+using IdentityService.DataAccess.Database.Persistence.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace IdentityService.DataAccess.Database.Persistance.Configuration;
+namespace IdentityService.DataAccess.Database.Persistence.Configuration;
 
 public class IdentityContext : DbContext, IContext
 {

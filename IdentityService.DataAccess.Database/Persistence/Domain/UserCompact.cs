@@ -2,10 +2,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Net.Mail;
 using IdentityService.DataAccess.Database.Core.BaseDomain;
 using IdentityService.DataAccess.Database.Core.Domain;
-using IdentityService.DataAccess.Database.Persistance.Validation;
+using IdentityService.DataAccess.Database.Persistence.Validation;
 using Microsoft.EntityFrameworkCore;
 
-namespace IdentityService.DataAccess.Database.Persistance.Domain;
+namespace IdentityService.DataAccess.Database.Persistence.Domain;
 
 [Index(nameof(Email), IsUnique = true)]
 [Index(nameof(Username), IsUnique = true)]
@@ -24,6 +24,7 @@ public class UserCompact : BaseEntity, IUserCompact
     public string Username { get; set; } = null!;
     
     [Required]
+    [MinLength(14)]
     public string Password { get; set; } = null!;
 
     public List<string> ValidateWithMessage()
@@ -47,6 +48,8 @@ public class UserCompact : BaseEntity, IUserCompact
         }
         
         // Validate password
+        // TODO: this is not a good way to validate password
+        
         if (Password?.Length < 8)
         {
             messages.Add(ModelValidationMessages.PASSWORD_IS_NOT_VALID);

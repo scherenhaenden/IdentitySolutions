@@ -1,5 +1,5 @@
 using IdentityService.DataAccess.Database.Core.Repositories;
-using IdentityService.DataAccess.Database.Persistance.Domain;
+using IdentityService.DataAccess.Database.Persistence.Domain;
 
 namespace IdentityService.DataAccess.Database.Core.Unities;
 

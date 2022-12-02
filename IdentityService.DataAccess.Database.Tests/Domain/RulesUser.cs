@@ -1,4 +1,4 @@
-using IdentityService.DataAccess.Database.Persistance.Domain;
+using IdentityService.DataAccess.Database.Persistence.Domain;
 using IdentityService.DataAccess.Database.Tests._Setup;
 using NUnit.Framework;
 
@@ -32,11 +32,6 @@ public class RulesUser:BaseSetup
         user.FirstName = "Geronimo";
         user.LastName = "Tarzan";
         user.Phone = "1234567890";
-        user.Address = "1234 Main St";
-        user.City = "New York";
-        user.State = "NY";
-        user.Zip = "12345";
-        user.Country = "USA";
         user.Company = "Company";
         user.Website = "www.company.com";
         user.ImageUrl = "www.company.com/image.jpg";
@@ -47,8 +42,7 @@ public class RulesUser:BaseSetup
         user.NeedsEmailConfirmation = false;
         user.EmailConfirmed = false;
         // TODO: this is twice
-        
-        user.PhoneNumber = "123456789";
+
         user.PhoneNumberConfirmed = false;
         user.NeedsPhoneConfirmation = false;
         

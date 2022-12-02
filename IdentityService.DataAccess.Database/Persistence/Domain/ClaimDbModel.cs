@@ -2,7 +2,7 @@ using IdentityService.DataAccess.Database.Core.BaseDomain;
 using IdentityService.DataAccess.Database.Core.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace IdentityService.DataAccess.Database.Persistance.Domain;
+namespace IdentityService.DataAccess.Database.Persistence.Domain;
 
 [Index(nameof(ClaimType), nameof(ClaimValue),  IsUnique = true)]
 public class ClaimDbModel : BaseEntity, IClaim

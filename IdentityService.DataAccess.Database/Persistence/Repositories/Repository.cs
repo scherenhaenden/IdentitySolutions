@@ -3,7 +3,7 @@ using IdentityService.DataAccess.Database.Core.BaseDomain;
 using IdentityService.DataAccess.Database.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace IdentityService.DataAccess.Database.Persistance.Repositories;
+namespace IdentityService.DataAccess.Database.Persistence.Repositories;
 
 public class Repository<TEntity> :IRepository<TEntity> where TEntity : BaseEntity, IBaseEntity
 {
@@ -53,11 +53,6 @@ public class Repository<TEntity> :IRepository<TEntity> where TEntity : BaseEntit
 
     public TEntity? SingleOrDefault(Expression<Func<TEntity, bool>> predicate)
     {
-       
-
-        
-        
-        
         return Entity.SingleOrDefault(predicate);
     }
 

@@ -20,7 +20,7 @@ jobs:
         dotnet-version: 7.0.x
 
     - name: Restore Dependencies
-      run: dotnet restore dotnet restore IdentitySolutions.sln
+      run: dotnet restore IdentityService.DataAccess.Database/IdentityService.DataAccess.Database.csproj
 
     - name: Build
       run: dotnet build IdentityService.DataAccess.Database/IdentityService.DataAccess.Database.csproj  --configuration Release --no-restore

@@ -1,5 +1,5 @@
 using IdentityService.DataAccess.Database.Core.Configuration;
-using IdentityService.DataAccess.Database.Persistance.Configuration;
+using IdentityService.DataAccess.Database.Persistence.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 namespace IdentityService.DataAccess.Database.Tests._Setup;

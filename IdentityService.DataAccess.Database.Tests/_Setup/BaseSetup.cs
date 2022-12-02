@@ -1,6 +1,6 @@
 using System.Diagnostics;
 using IdentityService.DataAccess.Database.Core.Unities;
-using IdentityService.DataAccess.Database.Persistance.Unities;
+using IdentityService.DataAccess.Database.Persistence.Unities;
 using NUnit.Framework;
 
 namespace IdentityService.DataAccess.Database.Tests._Setup;

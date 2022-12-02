@@ -14,16 +14,12 @@ public class UnitOfWork: IUnitOfWork
     public UnitOfWork(IdentityContext context)
     {
         _context = context;
-        Claims = InitObjects<ClaimDbModel>();
+        Claims = InitObjects<UserClaim>();
         LoginInformation = InitObjects<LoginInformation>();
         LoginType = InitObjects<LoginType>();
         Organization = InitObjects<Organization>();
         Role = InitObjects<Role>();
-        ScopeCompact = InitObjects<ScopeCompact>();
         User = InitObjects<User>();
-        UserCompact = InitObjects<UserCompact>();
-        
-        
     }
     
     private  IRepository<T> InitObjects<T>()  where T : BaseEntity
@@ -31,14 +27,12 @@ public class UnitOfWork: IUnitOfWork
         return  new Repository<T>(_context);
     }
 
-    public IRepository<ClaimDbModel> Claims { get; set; }
+    public IRepository<UserClaim> Claims { get; set; }
     public IRepository<LoginInformation> LoginInformation { get; set; }
     public IRepository<LoginType> LoginType { get; set; }
     public IRepository<Organization> Organization { get; set; }
     public IRepository<Role> Role { get; set; }
-    public IRepository<ScopeCompact> ScopeCompact { get; set; }
     public IRepository<User> User { get; set; }
-    public IRepository<UserCompact> UserCompact { get; set; }
     public bool Save()
     {
         var result = _context.SaveChanges();

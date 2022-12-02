@@ -17,6 +17,8 @@ public class Repository<TEntity> :IRepository<TEntity> where TEntity : BaseEntit
     
     public IQueryable<TEntity> GetAll()
     {
+        
+        
         return Entity.AsNoTracking();
     }
 
@@ -32,6 +34,7 @@ public class Repository<TEntity> :IRepository<TEntity> where TEntity : BaseEntit
 
     public TEntity Add(TEntity entity)
     {
+        (Entity as BaseEntity)?.OnNew();
         Entity.Add(entity);
         return entity;
     }
@@ -39,6 +42,13 @@ public class Repository<TEntity> :IRepository<TEntity> where TEntity : BaseEntit
     public Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
+    }
+
+    public TEntity Update(TEntity entity)
+    {
+        (Entity as BaseEntity)?.OnUpdate();
+        var result = Entity.Update(entity);
+        return result.Entity;
     }
 
     public Task UpdateAsync(TEntity entity, CancellationToken cancellationToken = default)

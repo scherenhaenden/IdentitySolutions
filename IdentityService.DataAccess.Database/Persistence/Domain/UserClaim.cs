@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace IdentityService.DataAccess.Database.Persistence.Domain;
 
 [Index(nameof(ClaimType), nameof(ClaimValue),  IsUnique = true)]
-public class ClaimDbModel : BaseEntity, IClaim
+public class UserClaim : BaseEntity, IUserClaim
 {
     public string ClaimType { get; set; } = null!;
     public string ClaimValue { get; set; } = null!;

@@ -1,6 +1,8 @@
 using IdentityService.DataAccess.Database.Persistence.Domain;
+using IdentityService.DataAccess.Database.Persistence.Validation;
 using IdentityService.DataAccess.Database.Tests._Setup;
-using NUnit.Framework;
+using IdentityService.DataAccess.Database.Tests.Helpers;
+using Microsoft.EntityFrameworkCore;
 
 namespace IdentityService.DataAccess.Database.Tests.Domain;
 
@@ -22,15 +24,113 @@ public class RulesUser:BaseSetup
     }
     
     // Write first test should pass
-    [Test]
-    public void DDD_01_User_shouldPass()
+    // Write First Testv
+    [Test, Order(1)]
+    public void DDD_01_UserCompact_SaveUserAndTestIt_shouldPass()
     {
+        //_unitOfWork = base.GetUnitOfWork(_database);
+        var user = new User();
+        user.Username = "Test";
+        user.Email = "email@email.com";
+        user.Password = "fsdfsdfdsfdsfs";
+        user.FirstName = "Test";
+        user.LastName = "Test";
+        user.Password = "fsdfsdfsfdsfsdfdsfdsfdsfds";
 
+        var userAfterSaved = _unitOfWork.User.Add(user);
+        _unitOfWork.Save();
+        Assert.IsNotNull(userAfterSaved);
+
+        var sameUser = _unitOfWork.User.Get(user.Guid);
+        
+        PropertiesTester.AssertProperties(user, sameUser);
+        //Assert.AreEqual(user, sameUser);
+        
+        /*// Get all Properties from object
+        var properties = user.GetType().GetProperties();
+        
+        // Loop through all properties
+        foreach (var property in properties)
+        {
+            // Get the value of the property
+            var value = property.GetValue(user, null);
+            var value2 = property.GetValue(sameUser, null);
+            Assert.AreEqual(value, value2);
+        }*/
+
+    }
+    
+    
+    
+    // Write Second Test DDD_USerCompact_shouldFail
+    [Test, Order(2)]
+    public void DDD_02_UserCompact_shouldFail_UsernameIsBeingUsed()
+    {
+        var userCompact = new User();
+        userCompact.Username = "Test";
+        userCompact.Email = "email2@email.com";
+        userCompact.Password = "asfafasffa";
+        userCompact.FirstName = "Test";
+        userCompact.LastName = "Test";
+
+        var errors = userCompact.ValidateWithMessage();
+        
+        Assert.IsTrue(errors.Count < 1);
+
+
+        _unitOfWork.User.Add(userCompact);
+        Assert.Throws<DbUpdateException>(()=>_unitOfWork.Save());
+        
+    }
+    
+    // Write Third Test DDD_UserCompact_shouldFail
+    [Test, Order(3)]
+    public void DDD_03_UserCompact_shouldFail_email_is_registered()
+    {
+        var user = new User();
+        user.Username = "Test2";
+        user.Email = "email@email.com";
+        user.Password = "dsfsdfsd";
+        
+        var errors = user.ValidateWithMessage();
+        Assert.IsTrue(errors.Count < 1);
+
+        _unitOfWork.User.Add(user);
+        Assert.Throws<DbUpdateException>(() => _unitOfWork.Save());
+    }
+    
+    // Write Fourth Test DDD_UserCompact_shouldFail
+    [Test, Order(4)]
+    public void DDD_04_UserCompact_shouldFail_Did_not_passed_validation()
+    {
+        var userCompact = new User();
+        userCompact.Username = "";
+        userCompact.Email = "";
+        userCompact.Password = "";
+
+        var errors = userCompact.ValidateWithMessage();
+        Assert.IsTrue(errors.Count == 3);
+
+        Assert.IsNotNull(errors.Any(X => X == ModelValidationMessages.PASSWORD_IS_NOT_VALID));
+        Assert.IsNotNull(errors.Any(X => X == ModelValidationMessages.USERNAME_IS_NOT_VALID));
+        Assert.IsNotNull(errors.Any(X => X == ModelValidationMessages.EMAIL_IS_NOT_VALID));
+    }
+    
+    [Test, Order(5)]
+    public void DDD_05_User_shouldPass()
+    {
+        
+        _database ="Lola.db";
+        Setup();
+
+        var users = _unitOfWork.User.GetAll().ToList();
         // TODO: Address should not be here
         var user = new User();
-        user.Guid = Guid.NewGuid();
-        user.FirstName = "Geronimo";
-        user.LastName = "Tarzan";
+        user.Username = "sTrrrest-1";
+        user.FirstName = "sTrrrest-1";
+        user.LastName = "sTrrrest-1";
+        user.Email = "emailv2@email.com";
+        user.Password = "fsdfsdfdsfdsfswerwerew";
         user.Phone = "1234567890";
         user.Company = "Company";
         user.Website = "www.company.com";
@@ -38,25 +138,28 @@ public class RulesUser:BaseSetup
         user.Bio = "This is a bio";
         user.AccessFailedCount = 0;
         user.ConcurrencyStamp = "";
-        user.Email = "email@email.com";
         user.NeedsEmailConfirmation = false;
         user.EmailConfirmed = false;
+        
         // TODO: this is twice
 
         user.PhoneNumberConfirmed = false;
         user.NeedsPhoneConfirmation = false;
+        user.OnNew();
         
-        
-        var result = _unitOfWork.User.Add(user);
-        _unitOfWork.Save();
-        Assert.IsNotNull(result);
+        //user.Guid
+        try
+        {
+            var result = _unitOfWork.User.Add(user);
+            _unitOfWork.Save();
+            Assert.IsNotNull(result);
+        }
+        catch (Exception e)
+        {
+            TearDown_v(_database);
             
-        
-        
-        
-        
-        
-        
+        }
+
     }
     
     [TearDown]

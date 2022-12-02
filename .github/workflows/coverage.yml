@@ -2,9 +2,9 @@ name: .Net 7 CI Build
 
 on:
   push:
-    branches: [ 'features/*' ]
+    branches: [ '*' ]
   pull_request:
-    branches: [ 'features/*' ]
+    branches: [ '*' ]
 
 jobs:
   build:

@@ -22,13 +22,13 @@ jobs:
     - name: Restore Dependencies
       run: dotnet restore dotnet restore IdentityService.DataAccess.Database/IdentityService.DataAccess.Database.csproj 
       
-    - name: Restore Dependencies
+    - name: Restore Dependencies2
       run: dotnet restore dotnet restore IdentityService.DataAccess.Database.Tests/IdentityService.DataAccess.Database.Tests.csproj
 
     - name: Build
       run: dotnet build IdentityService.DataAccess.Database/IdentityService.DataAccess.Database.csproj  --configuration Release --no-restore
 
-    - name: Build
+    - name: Build2
       run: dotnet build IdentityService.DataAccess.Database.Tests/IdentityService.DataAccess.Database.Tests.csproj  --configuration Release --no-restore
 
     - name: Test

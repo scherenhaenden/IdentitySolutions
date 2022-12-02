@@ -20,13 +20,19 @@ jobs:
         dotnet-version: 7.0.x
 
     - name: Restore Dependencies
-      run: dotnet restore IdentitySolutions.sln
+      run: dotnet restore dotnet restore IdentityService.DataAccess.Database/IdentityService.DataAccess.Database.csproj 
+      
+    - name: Restore Dependencies
+      run: dotnet restore dotnet restore IdentityService.DataAccess.Database.Tests/IdentityService.DataAccess.Database.Tests.csproj
 
     - name: Build
-      run: dotnet build IdentitySolutions.sln --configuration Release --no-restore
+      run: dotnet build IdentityService.DataAccess.Database/IdentityService.DataAccess.Database.csproj  --configuration Release --no-restore
+
+    - name: Build
+      run: dotnet build IdentityService.DataAccess.Database.Tests/IdentityService.DataAccess.Database.Tests.csproj  --configuration Release --no-restore
 
     - name: Test
-      run: dotnet test IdentitySolutions.sln --configuration Release --no-build --verbosity normal --collect:"XPlat Code Coverage" --results-directory ./coverage
+      run: dotnet test IdentityService.DataAccess.Database.Tests/IdentityService.DataAccess.Database.Tests.csproj --configuration Release --no-build --verbosity normal --collect:"XPlat Code Coverage" --results-directory ./coverage
 
     - name: Code Coverage Report
       uses: irongut/CodeCoverageSummary@v1.3.0

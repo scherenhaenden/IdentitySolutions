@@ -11,6 +11,7 @@ function onStart(options) {
     context = canvas.getContext('2d');
     width = options.width;
     filter = options.filter;
+    requestPermissions(this, arrayOf(Manifest.permission.CAMERA), REQUEST_CODE)
     navigator.mediaDevices.getUserMedia({ video: true, audio: false })
         .then(function (stream) {
             video.srcObject = stream;

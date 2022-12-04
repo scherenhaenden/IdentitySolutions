@@ -2,9 +2,7 @@
 import { Component } from '@angular/core';
 import { Button, EventData, SearchBar, TextField } from '@nativescript/core';
 import * as application from "@nativescript/core/application"
-
-
-
+import { requestPermissions, requestCameraPermissions } from '@nativescript/camera';
 
 @Component({
   moduleId: module.id,
@@ -15,9 +13,15 @@ import * as application from "@nativescript/core/application"
 export class HomeComponent {
 
   isLoggingIn = true;
+  pause = true;
+  askedForPermission = false;
+  status = "Not started";
 
   toggleForm() {
     this.isLoggingIn = !this.isLoggingIn;
+  }
+  onScanResult(evt) {
+    console.log(`onScanResult: ${evt.text} (${evt.format})`);
   }
 
   submit() {
@@ -25,6 +29,24 @@ export class HomeComponent {
         // Perform the login
     } else {
         // Perform the registration
+    }
+  }
+
+  public initRequesForCameraPermission() {
+    if (!this.askedForPermission) {
+      this.askedForPermission = true;
+      requestCameraPermissions().then(
+        () => {
+          console.log("Permissions granted!");
+          this.status = "Permissions granted!";
+          this.askedForPermission = true;
+        },
+        () => {
+          console.log("Permissions revoked!");
+          this.status = "Permissions revoked!";
+          this.askedForPermission = false;
+        }
+      );
     }
   }
 

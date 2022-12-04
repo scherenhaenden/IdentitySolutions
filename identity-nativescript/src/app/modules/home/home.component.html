@@ -1,8 +1,25 @@
+
 <FlexboxLayout class="page">
 	<StackLayout class="form">
+
+		<StackLayout class="input-field" >
+			<Label >Status: {{status}}</Label>
+			<button (tap)="initRequesForCameraPermission()">Ask for permission</button>
+
+		  </StackLayout>
+
+		<StackLayout class="input-field" *ngIf="askedForPermission">
+			<Label >Status: {{status}}</Label>
+			<BarcodeView width="100" height="100" (scanResult)="onScanResult($event)"></BarcodeView>
+		  </StackLayout>
+
+
+
 	  <StackLayout class="input-field">
 		<TextField hint="Email" ...></TextField>
 	  </StackLayout>
+
+
 
 	  <StackLayout class="input-field">
 		<TextField hint="Password" ...></TextField>

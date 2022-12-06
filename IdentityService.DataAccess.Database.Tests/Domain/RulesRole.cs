@@ -61,4 +61,11 @@ public class RulesRole:BaseSetup
         PropertiesTester.AssertOnNewAndOnUpdate(role);
         
     }
+    
+    [TearDown]
+    public void TearDown()
+    {
+        base.TearDown_v(_database);
+        // Tear down code goes here
+    }
 }

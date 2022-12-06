@@ -1,5 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace IdentityService.DataAccess.Database.Core.BaseDomain;
 
@@ -9,6 +11,10 @@ public interface IBaseEntity
     DateTime InsertedDate { get; set; }
     DateTime UpdatedDate { get; set; }
     public bool IsActive { get; set; }
+
+    void OnNew();
+
+    void OnUpdate();
 }
 
 public class BaseEntity : IBaseEntity
@@ -19,6 +25,20 @@ public class BaseEntity : IBaseEntity
     public DateTime InsertedDate { get; set; }
     public DateTime UpdatedDate { get; set; }
     public bool IsActive { get; set; } = true;
+    
+    
+    public void OnNew()
+    {
+        Guid = Guid.NewGuid();
+        InsertedDate = DateTime.Now;
+        UpdatedDate = DateTime.Now;
+    }
+
+    public void OnUpdate()
+    {
+        UpdatedDate = DateTime.Now;
+    }
+
 }
 
 

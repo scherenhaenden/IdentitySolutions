@@ -1,6 +1,7 @@
 using IdentityService.DataAccess.Database.Core.Unities;
-using IdentityService.DataAccess.Database.Persistance.Domain;
+using IdentityService.DataAccess.Database.Persistence.Domain;
 using IdentityService.DataAccess.Database.Tests._Setup;
+using IdentityService.DataAccess.Database.Tests.Helpers;
 using Microsoft.EntityFrameworkCore;
 
 namespace IdentityService.DataAccess.Database.Tests.Domain;
@@ -11,7 +12,7 @@ public class RulesClaimDbModel :BaseSetup
 {
 
     private new string _database = "Claim.db";
-    private new IUnitOfWork _unitOfWork;
+    private new IUnitOfWorkTenant _unitOfWorkTenant;
 
     public RulesClaimDbModel()
     {
@@ -23,7 +24,7 @@ public class RulesClaimDbModel :BaseSetup
     [OneTimeSetUp]
     public void Setup()
     {
-        _unitOfWork = base.GetUnitOfWork(_database);
+        _unitOfWorkTenant = base.GetUnitOfWork(_database);
     }
     
     
@@ -32,26 +33,29 @@ public class RulesClaimDbModel :BaseSetup
     public void DDD_01_ClaimDbModel_shouldPass()
     {
         //_unitOfWork = base.GetUnitOfWork(_database);
-        var claimDbModel = new ClaimDbModel();
+        var claimDbModel = new UserClaim();
+        
         claimDbModel.Guid = Guid.NewGuid();
         claimDbModel.ClaimType = "ClaimType";
         claimDbModel.ClaimValue = "ClaimValue.type";
         
-        var result = _unitOfWork.Claims.Add(claimDbModel);
-        _unitOfWork.Save();
+        var result = _unitOfWorkTenant.Claims.Add(claimDbModel);
+        _unitOfWorkTenant.Save();
         Assert.IsNotNull(result);
+        PropertiesTester.AssertProperties(result, claimDbModel);
+        
     }
     
     [Test, Order(2)]
     public void DDD_02_ClaimDbModel_shouldFail()
     {
-        var claimDbModel = new ClaimDbModel();
+        var claimDbModel = new UserClaim();
         claimDbModel.Guid = Guid.NewGuid();
         claimDbModel.ClaimType = "ClaimType";
         claimDbModel.ClaimValue = "ClaimValue.type";
         
-        var result = _unitOfWork.Claims.Add(claimDbModel);
-        Assert.Throws<DbUpdateException>(()=>_unitOfWork.Save());
+        var result = _unitOfWorkTenant.Claims.Add(claimDbModel);
+        Assert.Throws<DbUpdateException>(()=>_unitOfWorkTenant.Save());
         
     }
     
@@ -59,11 +63,11 @@ public class RulesClaimDbModel :BaseSetup
     [Test, Order(2)]
     public void DDD_02_ClaimDbModel_shouldPass()
     {
-        var claimDbModel = new ClaimDbModel();
+        var claimDbModel = new UserClaim();
         claimDbModel.ClaimType = "ClaimType";
         claimDbModel.ClaimValue = "ClaimValue.type";
 
-        var result = _unitOfWork.Claims.SingleOrDefault(x =>
+        var result = _unitOfWorkTenant.Claims.SingleOrDefault(x =>
             x.ClaimType == claimDbModel.ClaimType && x.ClaimValue == claimDbModel.ClaimValue);
         Assert.NotNull(result);
     }

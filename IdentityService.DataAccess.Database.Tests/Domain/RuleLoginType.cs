@@ -2,7 +2,6 @@ using IdentityService.DataAccess.Database.Core.Unities;
 using IdentityService.DataAccess.Database.Persistence.Domain;
 using IdentityService.DataAccess.Database.Tests._Setup;
 using Microsoft.EntityFrameworkCore;
-using NUnit.Framework;
 
 namespace IdentityService.DataAccess.Database.Tests.Domain;
 
@@ -11,7 +10,7 @@ public class RuleLoginType:BaseSetup
 {
 
     private new string _database = "LoginType.db";
-    private new IUnitOfWork _unitOfWork;
+    private new IUnitOfWorkTenant _unitOfWorkTenant;
 
     public RuleLoginType()
     {
@@ -23,7 +22,7 @@ public class RuleLoginType:BaseSetup
     [OneTimeSetUp]
     public void Setup()
     {
-        _unitOfWork = base.GetUnitOfWork(_database);
+        _unitOfWorkTenant = base.GetUnitOfWork(_database);
     }
     
     // Write First Test
@@ -35,8 +34,8 @@ public class RuleLoginType:BaseSetup
         loginType.LoginTypeName = LoginTypes.BasicEmailAndPassword;
         
         
-        var result = _unitOfWork.LoginType.Add(loginType);
-        _unitOfWork.Save();
+        var result = _unitOfWorkTenant.LoginType.Add(loginType);
+        _unitOfWorkTenant.Save();
         Assert.IsNotNull(result);
     }
     
@@ -48,8 +47,8 @@ public class RuleLoginType:BaseSetup
         loginType.LoginTypeName = LoginTypes.BasicUserAndPassword;
         
         
-        var result = _unitOfWork.LoginType.Add(loginType);
-        _unitOfWork.Save();
+        var result = _unitOfWorkTenant.LoginType.Add(loginType);
+        _unitOfWorkTenant.Save();
         Assert.IsNotNull(result);
     }
     
@@ -62,8 +61,8 @@ public class RuleLoginType:BaseSetup
         loginType.LoginTypeName = LoginTypes.BasicEmailAndPassword;
         
         
-        var result = _unitOfWork.LoginType.Add(loginType);
-        Assert.Throws<DbUpdateException>(()=>_unitOfWork.Save());
+        var result = _unitOfWorkTenant.LoginType.Add(loginType);
+        Assert.Throws<DbUpdateException>(()=>_unitOfWorkTenant.Save());
         
     }
     
@@ -75,8 +74,8 @@ public class RuleLoginType:BaseSetup
         loginType.LoginTypeName = LoginTypes.BasicUserAndPassword;
         
         
-        var result = _unitOfWork.LoginType.Add(loginType);
-        Assert.Throws<DbUpdateException>(()=>_unitOfWork.Save());
+        var result = _unitOfWorkTenant.LoginType.Add(loginType);
+        Assert.Throws<DbUpdateException>(()=>_unitOfWorkTenant.Save());
     }
 
     

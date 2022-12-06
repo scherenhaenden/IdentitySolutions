@@ -17,6 +17,7 @@ public class UnitOfWorkGlobal : IUnityOfWorkGlobal
         _context = context;
         GlobalUsers = InitObjects<GlobalUser>();
         GlobalAddresses = InitObjects<GlobalAddress>();
+        GlobalRoles = InitObjects<GlobalRole>();
     }
     
     private  IRepository<T> InitObjects<T>()  where T : BaseEntity, IBaseEntity
@@ -33,6 +34,7 @@ public class UnitOfWorkGlobal : IUnityOfWorkGlobal
 
     public IRepository<GlobalUser> GlobalUsers { get; set; }
     public IRepository<GlobalAddress> GlobalAddresses { get; set; }
+    public IRepository<GlobalRole> GlobalRoles { get; set; }
 
     public bool Save()
     {

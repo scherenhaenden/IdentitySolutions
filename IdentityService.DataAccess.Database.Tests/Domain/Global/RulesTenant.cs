@@ -39,4 +39,11 @@ public class RulesTenant:BaseSetup
         Assert.IsNotNull(result);
     }
     
+    [TearDown]
+    public void TearDown()
+    {
+        base.TearDown_v(_database);
+        // Tear down code goes here
+    }
+    
 }

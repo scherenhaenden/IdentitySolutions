@@ -20,4 +20,6 @@ public class IdentityContextGlobal : DbContext, IContextGlobal
     }
 
     public DbSet<GlobalUser> GlobalUsers { get; set; }
+    
+    public DbSet<GlobalAddress> GlobalAddresses { get; set; }
 }

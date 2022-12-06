@@ -1,4 +1,3 @@
-using IdentityService.DataAccess.Database.Core.Configuration;
 using IdentityService.DataAccess.Database.Persistence.Configuration;
 using Microsoft.EntityFrameworkCore;
 

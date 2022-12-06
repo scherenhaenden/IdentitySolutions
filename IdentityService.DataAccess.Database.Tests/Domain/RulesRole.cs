@@ -1,7 +1,6 @@
 using IdentityService.DataAccess.Database.Persistence.Domain;
 using IdentityService.DataAccess.Database.Tests._Setup;
 using IdentityService.DataAccess.Database.Tests.Helpers;
-using NUnit.Framework;
 
 namespace IdentityService.DataAccess.Database.Tests.Domain;
 
@@ -19,7 +18,7 @@ public class RulesRole:BaseSetup
     [OneTimeSetUp]
     public void Setup()
     {
-        _unitOfWork = base.GetUnitOfWork(_database);
+        UnitOfWorkTenant = base.GetUnitOfWork(_database);
     }
     
     [Test, Order(1)]
@@ -32,8 +31,8 @@ public class RulesRole:BaseSetup
         role.NormalizedName = "test";
         role.IsActive = true;
 
-        var result = _unitOfWork.Role.Add(role);
-        _unitOfWork.Save();
+        var result = UnitOfWorkTenant.Role.Add(role);
+        UnitOfWorkTenant.Save();
         PropertiesTester.AssertProperties(result, role);
         Assert.IsNotNull(result);
     }
@@ -42,12 +41,12 @@ public class RulesRole:BaseSetup
     public void DDD_02_Role_UpdateRole_shouldPass()
     {
 
-        var result1 =_unitOfWork.Role.GetAll().ToList();
-        var updateMe = _unitOfWork.Role.SingleOrDefault(x => x.CodeName == "test");
+        var result1 =UnitOfWorkTenant.Role.GetAll().ToList();
+        var updateMe = UnitOfWorkTenant.Role.SingleOrDefault(x => x.CodeName == "test");
         updateMe.NormalizedName = "test2";
-        _unitOfWork.Role.Update(updateMe);
+        UnitOfWorkTenant.Role.Update(updateMe);
         
-        var result = _unitOfWork.Role.SingleOrDefault(x => x.CodeName == "test");
+        var result = UnitOfWorkTenant.Role.SingleOrDefault(x => x.CodeName == "test");
 
         PropertiesTester.AssertProperties(result, updateMe);
         

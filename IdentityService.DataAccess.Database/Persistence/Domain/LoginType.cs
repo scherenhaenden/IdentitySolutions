@@ -1,8 +1,7 @@
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using IdentityService.DataAccess.Database.Core.BaseDomain;
-using IdentityService.DataAccess.Database.Core.Domain;
+using IdentityService.DataAccess.Database.Core.Domain.InnerTenant;
 using Microsoft.EntityFrameworkCore;
 
 //using Org.BouncyCastle.Asn1.X509.Qualified;

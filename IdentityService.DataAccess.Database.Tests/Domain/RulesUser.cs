@@ -20,7 +20,7 @@ public class RulesUser:BaseSetup
     [OneTimeSetUp]
     public void Setup()
     {
-        _unitOfWork = base.GetUnitOfWork(_database);
+        UnitOfWorkTenant = base.GetUnitOfWork(_database);
     }
     
     // Write first test should pass
@@ -37,11 +37,11 @@ public class RulesUser:BaseSetup
         user.LastName = "Test";
         user.Password = "fsdfsdfsfdsfsdfdsfdsfdsfds";
 
-        var userAfterSaved = _unitOfWork.User.Add(user);
-        _unitOfWork.Save();
+        var userAfterSaved = UnitOfWorkTenant.User.Add(user);
+        UnitOfWorkTenant.Save();
         Assert.IsNotNull(userAfterSaved);
 
-        var sameUser = _unitOfWork.User.Get(user.Guid);
+        var sameUser = UnitOfWorkTenant.User.Get(user.Guid);
         
         PropertiesTester.AssertProperties(user, sameUser);
         //Assert.AreEqual(user, sameUser);
@@ -78,8 +78,8 @@ public class RulesUser:BaseSetup
         Assert.IsTrue(errors.Count < 1);
 
 
-        _unitOfWork.User.Add(userCompact);
-        Assert.Throws<DbUpdateException>(()=>_unitOfWork.Save());
+        UnitOfWorkTenant.User.Add(userCompact);
+        Assert.Throws<DbUpdateException>(()=>UnitOfWorkTenant.Save());
         
     }
     
@@ -95,8 +95,8 @@ public class RulesUser:BaseSetup
         var errors = user.ValidateWithMessage();
         Assert.IsTrue(errors.Count < 1);
 
-        _unitOfWork.User.Add(user);
-        Assert.Throws<DbUpdateException>(() => _unitOfWork.Save());
+        UnitOfWorkTenant.User.Add(user);
+        Assert.Throws<DbUpdateException>(() => UnitOfWorkTenant.Save());
     }
     
     // Write Fourth Test DDD_UserCompact_shouldFail
@@ -123,7 +123,7 @@ public class RulesUser:BaseSetup
         _database ="Lola.db";
         Setup();
 
-        var users = _unitOfWork.User.GetAll().ToList();
+        var users = UnitOfWorkTenant.User.GetAll().ToList();
         // TODO: Address should not be here
         var user = new User();
         user.Username = "sTrrrest-1";
@@ -150,8 +150,8 @@ public class RulesUser:BaseSetup
         //user.Guid
         try
         {
-            var result = _unitOfWork.User.Add(user);
-            _unitOfWork.Save();
+            var result = UnitOfWorkTenant.User.Add(user);
+            UnitOfWorkTenant.Save();
             Assert.IsNotNull(result);
         }
         catch (Exception e)

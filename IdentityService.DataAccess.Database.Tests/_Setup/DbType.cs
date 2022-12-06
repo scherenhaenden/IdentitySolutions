@@ -11,6 +11,8 @@ public interface IGetDbConnection
     // Get a connection to the database
     public IdentityContext GetConnection();
     
+    public IdentityContextGlobal GetConnectionGlobal();
+    
     // Destroy the database
     public void Destroy();
     
@@ -56,6 +58,20 @@ public class GetDbConnectionSqlite: IGetDbConnection
         return context;
     }
 
+    public IdentityContextGlobal GetConnectionGlobal()
+    {
+        // Get Path to Database
+        var path = Path.Combine(_currentDirectory,_databaseName);
+        
+        
+        var options = new DbContextOptionsBuilder<IdentityContextGlobal>()
+            .UseSqlite($"Data Source={path}").Options;
+
+        var context = new IdentityContextGlobal(options);
+
+        return context;
+    }
+
     public void Destroy()
     {
         var path = Path.Combine(_currentDirectory, _databaseName);
@@ -80,6 +96,15 @@ public class GetDbConnectionInMemory : IGetDbConnection
             .Options;
 
         return new IdentityContext(options);
+    }
+
+    public IdentityContextGlobal GetConnectionGlobal()
+    {
+        var options = new DbContextOptionsBuilder<IdentityContextGlobal>()
+            .UseInMemoryDatabase(databaseName: "IdentityService")
+            .Options;
+
+        return new IdentityContextGlobal(options);
     }
 
     public void Destroy()

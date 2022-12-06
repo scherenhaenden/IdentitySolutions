@@ -10,4 +10,13 @@
       <Folder Include="Domains\Web\Services\Persistance" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\IdentityService.DataAccess.Database\IdentityService.DataAccess.Database.csproj" />
+      <ProjectReference Include="..\IdentityService.DataAccess\IdentityService.DataAccess.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    </ItemGroup>
+
 </Project>

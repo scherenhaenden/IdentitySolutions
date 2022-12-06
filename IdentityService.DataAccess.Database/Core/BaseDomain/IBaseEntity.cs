@@ -1,5 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace IdentityService.DataAccess.Database.Core.BaseDomain;
 
@@ -36,6 +38,7 @@ public class BaseEntity : IBaseEntity
     {
         UpdatedDate = DateTime.Now;
     }
+
 }
 
 

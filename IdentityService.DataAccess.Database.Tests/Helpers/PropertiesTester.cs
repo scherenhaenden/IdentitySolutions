@@ -1,5 +1,4 @@
 using IdentityService.DataAccess.Database.Core.BaseDomain;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 
 namespace IdentityService.DataAccess.Database.Tests.Helpers;
 

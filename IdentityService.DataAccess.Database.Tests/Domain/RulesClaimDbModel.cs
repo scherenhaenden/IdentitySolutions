@@ -12,7 +12,7 @@ public class RulesClaimDbModel :BaseSetup
 {
 
     private new string _database = "Claim.db";
-    private new IUnitOfWork _unitOfWork;
+    private new IUnitOfWorkTenant _unitOfWorkTenant;
 
     public RulesClaimDbModel()
     {
@@ -24,7 +24,7 @@ public class RulesClaimDbModel :BaseSetup
     [OneTimeSetUp]
     public void Setup()
     {
-        _unitOfWork = base.GetUnitOfWork(_database);
+        _unitOfWorkTenant = base.GetUnitOfWork(_database);
     }
     
     
@@ -34,12 +34,13 @@ public class RulesClaimDbModel :BaseSetup
     {
         //_unitOfWork = base.GetUnitOfWork(_database);
         var claimDbModel = new UserClaim();
+        
         claimDbModel.Guid = Guid.NewGuid();
         claimDbModel.ClaimType = "ClaimType";
         claimDbModel.ClaimValue = "ClaimValue.type";
         
-        var result = _unitOfWork.Claims.Add(claimDbModel);
-        _unitOfWork.Save();
+        var result = _unitOfWorkTenant.Claims.Add(claimDbModel);
+        _unitOfWorkTenant.Save();
         Assert.IsNotNull(result);
         PropertiesTester.AssertProperties(result, claimDbModel);
         
@@ -53,8 +54,8 @@ public class RulesClaimDbModel :BaseSetup
         claimDbModel.ClaimType = "ClaimType";
         claimDbModel.ClaimValue = "ClaimValue.type";
         
-        var result = _unitOfWork.Claims.Add(claimDbModel);
-        Assert.Throws<DbUpdateException>(()=>_unitOfWork.Save());
+        var result = _unitOfWorkTenant.Claims.Add(claimDbModel);
+        Assert.Throws<DbUpdateException>(()=>_unitOfWorkTenant.Save());
         
     }
     
@@ -66,7 +67,7 @@ public class RulesClaimDbModel :BaseSetup
         claimDbModel.ClaimType = "ClaimType";
         claimDbModel.ClaimValue = "ClaimValue.type";
 
-        var result = _unitOfWork.Claims.SingleOrDefault(x =>
+        var result = _unitOfWorkTenant.Claims.SingleOrDefault(x =>
             x.ClaimType == claimDbModel.ClaimType && x.ClaimValue == claimDbModel.ClaimValue);
         Assert.NotNull(result);
     }

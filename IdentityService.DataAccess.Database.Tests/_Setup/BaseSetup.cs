@@ -1,7 +1,5 @@
-using System.Diagnostics;
 using IdentityService.DataAccess.Database.Core.Unities;
 using IdentityService.DataAccess.Database.Persistence.Unities;
-using NUnit.Framework;
 
 namespace IdentityService.DataAccess.Database.Tests._Setup;
 
@@ -12,7 +10,7 @@ namespace IdentityService.DataAccess.Database.Tests._Setup;
 public class BaseSetup
 {
     
-    protected IUnitOfWork _unitOfWork;
+    protected IUnitOfWorkTenant UnitOfWorkTenant;
     private IGetDbConnection _getDbConnection;
     private List<TaskRunningModel> _tasks = new List<TaskRunningModel>();
     public string? _database = null;
@@ -23,12 +21,20 @@ public class BaseSetup
         CreateConnection();
     }
     
-    public IUnitOfWork GetUnitOfWork(string database)
+    public IUnitOfWorkTenant GetUnitOfWork(string database)
 
     {
         IGetDbConnection getDbConnection = new GetDbConnectionSqlite(database);
         getDbConnection.Init();
-        return new UnitOfWork(getDbConnection.GetConnection());
+        return new UnitOfWorkTenant(getDbConnection.GetConnection());
+    }
+    
+    public IUnityOfWorkGlobal GetUnitOfWorkGlobal(string database)
+
+    {
+        IGetDbConnection getDbConnection = new GetDbConnectionSqlite(database);
+        getDbConnection.Init();
+        return new UnitOfWorkGlobal(getDbConnection.GetConnectionGlobal());
     }
 
     private void CreateConnection()
@@ -41,10 +47,11 @@ public class BaseSetup
             }
             else
             {
+                
                 _getDbConnection = new GetDbConnectionSqlite(_database);
             }
             _getDbConnection.Init();
-            _unitOfWork = new UnitOfWork(_getDbConnection.GetConnection());
+            UnitOfWorkTenant = new UnitOfWorkTenant(_getDbConnection.GetConnection());
         }
     }
     

@@ -44,7 +44,7 @@ public class RulesGlobalAddress:BaseSetup
         _unityOfWorkGlobal.GlobalAddresses.Add(globalUser);
         _unityOfWorkGlobal.Save();
 
-        var resultAddress = _unityOfWorkGlobal.GlobalAddresses.Where(
+        var resultAddress = (_unityOfWorkGlobal.GlobalAddresses.Where(
             x => x.City == "City" &&
                  x.Country == "Country" &&
                  x.State == "State" &&
@@ -53,7 +53,7 @@ public class RulesGlobalAddress:BaseSetup
                  x.NameOrNumberOfBuilding == "NameOrNumberOfBuilding" &&
                  x.Level == "Level" &&
                  x.ExtraInformation == "ExtraInformation"
-        ).ToList();
+        ) ?? Array.Empty<GlobalAddress>()).ToList();
         Assert.IsNotNull(resultAddress);
     }
 

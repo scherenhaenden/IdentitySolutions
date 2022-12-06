@@ -1,6 +1,6 @@
 using IdentityService.DataAccess.Database.Core.BaseDomain;
 
-namespace IdentityService.DataAccess.Database.Core.Domain.InnerTenant;
+namespace IdentityService.DataAccess.Database.Core.Domain.Tenant;
 
 public interface IAddress : IBaseEntity
 {

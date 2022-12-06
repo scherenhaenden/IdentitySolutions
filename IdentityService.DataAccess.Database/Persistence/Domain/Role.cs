@@ -1,5 +1,5 @@
 using IdentityService.DataAccess.Database.Core.BaseDomain;
-using IdentityService.DataAccess.Database.Core.Domain;
+using IdentityService.DataAccess.Database.Core.Domain.Global;
 using Microsoft.EntityFrameworkCore;
 
 namespace IdentityService.DataAccess.Database.Persistence.Domain;

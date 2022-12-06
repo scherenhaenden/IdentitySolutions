@@ -4,21 +4,27 @@ using IdentityService.DataAccess.Database.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace IdentityService.DataAccess.Database.Persistence.Repositories;
-
 public class Repository<TEntity> :IRepository<TEntity> where TEntity : BaseEntity, IBaseEntity
 {
     private readonly DbContext _context;
     public DbSet<TEntity> Entity { get; }
     public Repository(DbContext context)
     {
-        _context = context;
-        Entity = _context.Set<TEntity>();
+        try
+        {
+            _context = context;
+            Entity = _context.Set<TEntity>();
+        }
+        catch (Exception ex)
+        {
+            //throw new Exception(ex.Message);
+            var valu =ex.InnerException?.Message.ToString();
+        }
+
     }
     
     public IQueryable<TEntity> GetAll()
     {
-        
-        
         return Entity.AsNoTracking();
     }
 
@@ -34,7 +40,7 @@ public class Repository<TEntity> :IRepository<TEntity> where TEntity : BaseEntit
 
     public TEntity Add(TEntity entity)
     {
-        (Entity as BaseEntity)?.OnNew();
+        entity.OnNew();
         Entity.Add(entity);
         return entity;
     }

@@ -7,6 +7,8 @@ public interface IUnityOfWorkGlobal : IDisposable
 {
     public IRepository<GlobalUser> GlobalUsers { get; set; }
     
+    public IRepository<GlobalAddress> GlobalAddresses { get; set; }
+    
     public bool Save();
 
 }

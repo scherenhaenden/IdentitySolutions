@@ -1,6 +1,5 @@
 using IdentityService.BusinessLogic.Services.Installation;
 using IdentityService.DataAccess.Services.Installation;
-using NUnit.Framework;
 
 namespace IdentityService.BusinessLogic.Tests.Services.Installation;
 

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using IdentityService.DataAccess.Database.Core.BaseDomain;
-using IdentityService.DataAccess.Database.Core.Domain.Global;
+using IdentityService.DataAccess.Database.Core.Domains.Global;
 using IdentityService.DataAccess.Database.Persistence.Validation;
 using Microsoft.EntityFrameworkCore;
 

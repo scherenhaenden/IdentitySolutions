@@ -9,6 +9,8 @@ public interface IUnityOfWorkGlobal : IDisposable
     
     public IRepository<GlobalAddress> GlobalAddresses { get; set; }
     
+    public IRepository<GlobalRole> GlobalRoles { get; set; }
+    
     public bool Save();
 
 }

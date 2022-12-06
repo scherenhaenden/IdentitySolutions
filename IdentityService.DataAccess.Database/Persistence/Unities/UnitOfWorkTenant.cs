@@ -3,6 +3,7 @@ using IdentityService.DataAccess.Database.Core.Repositories;
 using IdentityService.DataAccess.Database.Core.Unities;
 using IdentityService.DataAccess.Database.Persistence.Configuration;
 using IdentityService.DataAccess.Database.Persistence.Domain;
+using IdentityService.DataAccess.Database.Persistence.Domain.Tenant;
 using IdentityService.DataAccess.Database.Persistence.Repositories;
 
 namespace IdentityService.DataAccess.Database.Persistence.Unities;

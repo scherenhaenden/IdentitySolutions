@@ -1,5 +1,6 @@
 using IdentityService.DataAccess.Database.Core.Configuration;
 using IdentityService.DataAccess.Database.Persistence.Domain;
+using IdentityService.DataAccess.Database.Persistence.Domain.Tenant;
 using Microsoft.EntityFrameworkCore;
 
 namespace IdentityService.DataAccess.Database.Persistence.Configuration;

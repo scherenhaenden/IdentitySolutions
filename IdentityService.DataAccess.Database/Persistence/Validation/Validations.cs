@@ -1,6 +1,6 @@
 using System.Net.Mail;
-using IdentityService.DataAccess.Database.Core.Domain.Global;
-using IdentityService.DataAccess.Database.Core.Domain.InnerTenant;
+using IdentityService.DataAccess.Database.Core.Domains.Global;
+using IdentityService.DataAccess.Database.Core.Domains.Tenant;
 
 namespace IdentityService.DataAccess.Database.Persistence.Validation;
 

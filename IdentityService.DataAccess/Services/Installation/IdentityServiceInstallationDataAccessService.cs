@@ -1,4 +1,4 @@
-using IdentityService.DataAccess.Database.ContextManagment;
+using IdentityService.DataAccess.Database.ContextManagement;
 using IdentityService.DataAccess.Database.Core.Unities;
 using IdentityService.DataAccess.Database.Persistence.Domain.Global;
 using IdentityService.DataAccess.Database.Persistence.Unities;

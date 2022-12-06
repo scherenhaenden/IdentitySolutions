@@ -1,11 +1,10 @@
 using System.ComponentModel.DataAnnotations;
-using System.Net.Mail;
 using IdentityService.DataAccess.Database.Core.BaseDomain;
-using IdentityService.DataAccess.Database.Core.Domain.InnerTenant;
+using IdentityService.DataAccess.Database.Core.Domains.Tenant;
 using IdentityService.DataAccess.Database.Persistence.Validation;
 using Microsoft.EntityFrameworkCore;
 
-namespace IdentityService.DataAccess.Database.Persistence.Domain;
+namespace IdentityService.DataAccess.Database.Persistence.Domain.Tenant;
 
 [Index(nameof(Email), IsUnique = true)]
 [Index(nameof(Username), IsUnique = true)]

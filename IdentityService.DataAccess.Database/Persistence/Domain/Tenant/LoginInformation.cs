@@ -1,6 +1,6 @@
 using IdentityService.DataAccess.Database.Core.BaseDomain;
 
-namespace IdentityService.DataAccess.Database.Persistence.Domain;
+namespace IdentityService.DataAccess.Database.Persistence.Domain.Tenant;
 
 public class LoginInformation : BaseEntity
 {

@@ -1,8 +1,8 @@
 using IdentityService.DataAccess.Database.Core.BaseDomain;
-using IdentityService.DataAccess.Database.Core.Domain.InnerTenant;
+using IdentityService.DataAccess.Database.Core.Domains.Tenant;
 using Microsoft.EntityFrameworkCore;
 
-namespace IdentityService.DataAccess.Database.Persistence.Domain;
+namespace IdentityService.DataAccess.Database.Persistence.Domain.Tenant;
 
 [Index(nameof(Name), IsUnique = true)]
 public class Organization : BaseEntity, IOrganization

@@ -2,42 +2,37 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using IdentityService.DataAccess.Database.Core.BaseDomain;
 using IdentityService.DataAccess.Database.Core.Domains.Tenant;
+using IdentityService.DataAccess.Database.Core.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 //using Org.BouncyCastle.Asn1.X509.Qualified;
 
-namespace IdentityService.DataAccess.Database.Persistence.Domain.Tenant;
-
-[Index(nameof(TypeString), IsUnique = true)]
-public class LoginType :BaseEntity,  ILoginType
+namespace IdentityService.DataAccess.Database.Persistence.Domain.Tenant
 {
-    
-    
-    [Column("LoginTypeName")]
-    public string TypeString
+    [Index(nameof(TypeString), IsUnique = true)]
+    public class LoginType :BaseEntity,  ILoginType
     {
-        get { return LoginTypeName.ToString(); }
-        set { LoginTypeName= value.ParseEnum<LoginTypes>(); }
+    
+    
+        [Column("LoginTypeName")]
+        public string TypeString
+        {
+            get { return LoginTypeName.ToString(); }
+            set { LoginTypeName= value.ParseEnum<LoginTypes>(); }
+        }
+    
+        [NotMapped]
+        public LoginTypes LoginTypeName { get; set; }
+
+        public string? Description { get; set; }
     }
-    
-    [NotMapped]
-    public LoginTypes LoginTypeName { get; set; }
 
-    public string? Description { get; set; }
-}
-
-public enum LoginTypes  
-{
-    [Description("BasicEmailAndPassword")]
-    BasicEmailAndPassword,
-    [Description("BasicUserAndPassword")]
-    BasicUserAndPassword
-}
-public static class StringExtensions
-{
-    public static T ParseEnum<T>(this string value)
+    public enum LoginTypes  
     {
-        return (T)Enum.Parse(typeof(T), value, true);
+        [Description("BasicEmailAndPassword")]
+        BasicEmailAndPassword,
+        [Description("BasicUserAndPassword")]
+        BasicUserAndPassword
     }
 }
 

@@ -1,39 +1,40 @@
 using IdentityService.BusinessLogic.Services.Installation;
 using IdentityService.DataAccess.Services.Installation;
 
-namespace IdentityService.BusinessLogic.Tests.Services.Installation;
-
-[TestFixture]
-public class IIdentityServiceInstallationLogicService_Tests
+namespace IdentityService.BusinessLogic.Tests.Services.Installation
 {
-    // Write First Test
-    [Test, Order(1)]
-    public void DDD_01_TryInstallation_shouldPass()
+    [TestFixture]
+    public class IIdentityServiceInstallationLogicService_Tests
     {
-        
-        InstallationModel model = new InstallationModel(); 
-        string _currentDirectory = Directory.GetCurrentDirectory();
-        var path = Path.Combine(_currentDirectory,"somewhere.db");
-        
-        //delete if file exists
-        if (File.Exists(path))
+        // Write First Test
+        [Test, Order(1)]
+        public void DDD_01_TryInstallation_shouldPass()
         {
-            File.Delete(path);
-        }
-
-        model.AdminEmail = "Admin";
-        model.AdminPassword = "Admin";
-        model.AdminPasswordConfirm = "Admin";
-        model.ConnectionString = $"Data Source={path}";
-        model.DatabaseType = DatabaseType.Sqlite;
-        model.AdminUserName = "Admin";
-
-        IIdentityServiceInstallationLogicService identityServiceInstallationLogicService = new IdentityServiceInstallationLogicService();
-
-        var result =  identityServiceInstallationLogicService.Install(model);
+            InstallationModel model = new InstallationModel(); 
+            string _currentDirectory = Directory.GetCurrentDirectory();
+            var path = Path.Combine(_currentDirectory,"somewhere.db");
         
+            //delete if file exists
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+
+            model.AdminEmail = "Admin";
+            model.AdminPassword = "Admin";
+            model.AdminPasswordConfirm = "Admin";
+            model.ConnectionString = $"Data Source={path}";
+            model.DatabaseType = DatabaseType.Sqlite;
+            model.AdminUserName = "Admin";
+            model.AdminFirstName = "Admin";
+            model.AdminLastName = "Admin";
+
+            IIdentityServiceInstallationLogicService identityServiceInstallationLogicService = new IdentityServiceInstallationLogicService();
+
+            var result =  identityServiceInstallationLogicService.Install(model);
   
-        Assert.IsNotNull(result);
+            Assert.IsNotNull(result);
         
+        }
     }
 }

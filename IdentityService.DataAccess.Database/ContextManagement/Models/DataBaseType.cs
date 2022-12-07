@@ -1,9 +1,10 @@
-namespace IdentityService.DataAccess.Database.ContextManagement.Models;
-
-public enum DataBaseType
+namespace IdentityService.DataAccess.Database.ContextManagement.Models
 {
-    MsSql,
-    Sqlite,
-    Postgresql,
-    MSSqlServer,
+    public enum DataBaseType
+    {
+        MsSql,
+        Sqlite,
+        Postgresql,
+        MSSqlServer,
+    }
 }

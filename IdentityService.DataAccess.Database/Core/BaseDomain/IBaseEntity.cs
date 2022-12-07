@@ -3,42 +3,43 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace IdentityService.DataAccess.Database.Core.BaseDomain;
-
-public interface IBaseEntity
+namespace IdentityService.DataAccess.Database.Core.BaseDomain
 {
-    public Guid Guid { get; set; }
-    DateTime InsertedDate { get; set; }
-    DateTime UpdatedDate { get; set; }
-    public bool IsActive { get; set; }
-
-    void OnNew();
-
-    void OnUpdate();
-}
-
-public class BaseEntity : IBaseEntity
-{
-    [Key]
-    [DatabaseGenerated (DatabaseGeneratedOption.Identity)]
-    public Guid Guid { get; set; }
-    public DateTime InsertedDate { get; set; }
-    public DateTime UpdatedDate { get; set; }
-    public bool IsActive { get; set; } = true;
-    
-    
-    public void OnNew()
+    public interface IBaseEntity
     {
-        Guid = Guid.NewGuid();
-        InsertedDate = DateTime.Now;
-        UpdatedDate = DateTime.Now;
+        public Guid Guid { get; set; }
+        DateTime InsertedDate { get; set; }
+        DateTime UpdatedDate { get; set; }
+        public bool IsActive { get; set; }
+
+        void OnNew();
+
+        void OnUpdate();
     }
 
-    public void OnUpdate()
+    public class BaseEntity : IBaseEntity
     {
-        UpdatedDate = DateTime.Now;
-    }
+        [Key]
+        [DatabaseGenerated (DatabaseGeneratedOption.Identity)]
+        public Guid Guid { get; set; }
+        public DateTime InsertedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
+        public bool IsActive { get; set; } = true;
+    
+    
+        public void OnNew()
+        {
+            Guid = Guid.NewGuid();
+            InsertedDate = DateTime.Now;
+            UpdatedDate = DateTime.Now;
+        }
 
+        public void OnUpdate()
+        {
+            UpdatedDate = DateTime.Now;
+        }
+
+    }
 }
 
 

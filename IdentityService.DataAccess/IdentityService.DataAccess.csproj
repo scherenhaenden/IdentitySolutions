@@ -14,4 +14,9 @@
       <ProjectReference Include="..\IdentityService.DataAccess.Database\IdentityService.DataAccess.Database.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Services\Login\System\Core" />
+      <Folder Include="Services\Login\System\Mappers" />
+    </ItemGroup>
+
 </Project>

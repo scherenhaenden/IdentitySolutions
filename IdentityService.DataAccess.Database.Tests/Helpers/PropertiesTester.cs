@@ -1,40 +1,74 @@
 using IdentityService.DataAccess.Database.Core.BaseDomain;
 
-namespace IdentityService.DataAccess.Database.Tests.Helpers;
-
-public class PropertiesTester
+namespace IdentityService.DataAccess.Database.Tests.Helpers
 {
-    public static void AssertProperties (object objA, object objB)
+    public class PropertiesTester
     {
-        var type = objA.GetType();
-        var properties = type.GetProperties();
-        foreach (var property in properties)
+        public static void AssertProperties (object objA, object objB)
         {
-            var valueA = property.GetValue(objA);
-            var valueB = property.GetValue(objB);
-            Assert.AreEqual(valueA, valueB);
+            var type = objA.GetType();
+            var properties = type.GetProperties();
+            foreach (var property in properties)
+            {
+                var valueA = property.GetValue(objA);
+                var valueB = property.GetValue(objB);
+                Assert.AreEqual(valueA, valueB);
+            }
         }
-    }
+        
+        public static void AssertProperties (object objA, object objB, params string[] ignoreProperties)
+        {
+            var type = objA.GetType();
+            var properties = type.GetProperties();
+            foreach (var property in properties)
+            {
+                if (ignoreProperties.Contains(property.Name))
+                    continue;
+                
+                var valueA = property.GetValue(objA);
+                var valueB = property.GetValue(objB);
+                Assert.AreEqual(valueA, valueB);
+            }
+        }
+
+        public static void AssertAfterNew(BaseEntity baseEntity)
+        {
+            Assert.IsTrue(baseEntity.Guid != Guid.Empty);
+            Assert.IsTrue(baseEntity.InsertedDate < DateTime.Now.AddHours(1));
+            Assert.IsTrue(baseEntity.UpdatedDate < DateTime.Now.AddHours(1));
+            
+            Assert.IsTrue(baseEntity.InsertedDate > DateTime.Now.AddHours(-1));
+            Assert.IsTrue(baseEntity.UpdatedDate > DateTime.Now.AddHours(-1));
+        }
+        
+        public static void AssertAfterUpdate(BaseEntity baseEntity, BaseEntity Updated)
+        {
+            
+            Assert.IsTrue(baseEntity.InsertedDate == Updated.InsertedDate);
+            Assert.IsTrue(baseEntity.InsertedDate < Updated.UpdatedDate);
+        }
     
-    public static void AssertOnNewAndOnUpdate (BaseEntity baseEntity)
-    {
-        Assert.IsTrue(baseEntity.Guid == Guid.Empty);
-        Assert.IsTrue(baseEntity.InsertedDate < DateTime.MinValue.AddDays(1));
-        Assert.IsTrue(baseEntity.UpdatedDate < DateTime.MinValue.AddDays(1));
+        public static void AssertOnNewAndOnUpdate (BaseEntity baseEntity)
+        {
+            Assert.IsTrue(baseEntity.Guid == Guid.Empty);
+            Assert.IsTrue(baseEntity.InsertedDate < DateTime.MinValue.AddDays(1));
+            Assert.IsTrue(baseEntity.UpdatedDate < DateTime.MinValue.AddDays(1));
+            Thread.Sleep(10);
+            baseEntity.OnNew();
+            Assert.IsTrue(baseEntity.Guid != Guid.Empty);
+            Assert.IsTrue(baseEntity.InsertedDate > DateTime.Now.AddMinutes(-1));
+            var onNewDate = baseEntity.UpdatedDate;
+            Assert.IsTrue(baseEntity.UpdatedDate > DateTime.Now.AddMinutes(-1));
+            Thread.Sleep(10);
+            baseEntity.OnUpdate();
+            var onUpdateDate = baseEntity.UpdatedDate;
+            Assert.IsTrue(baseEntity.UpdatedDate > DateTime.Now.AddMinutes(-1));
+            Assert.AreNotEqual(onNewDate, onUpdateDate);
         
-        baseEntity.OnNew();
-        Assert.IsTrue(baseEntity.Guid != Guid.Empty);
-        Assert.IsTrue(baseEntity.InsertedDate > DateTime.Now.AddMinutes(-1));
-        var onNewDate = baseEntity.UpdatedDate;
-        Assert.IsTrue(baseEntity.UpdatedDate > DateTime.Now.AddMinutes(-1));
-        baseEntity.OnUpdate();
-        var onUpdateDate = baseEntity.UpdatedDate;
-        Assert.IsTrue(baseEntity.UpdatedDate > DateTime.Now.AddMinutes(-1));
-        Assert.AreNotEqual(onNewDate, onUpdateDate);
-        
-        //Assert.IsTrue(baseEntity.UpdatedAt > DateTime.MinValue);
+            //Assert.IsTrue(baseEntity.UpdatedAt > DateTime.MinValue);
         
         
-    }
+        }
     
+    }
 }

@@ -1,5 +1,6 @@
-﻿namespace IdentityService.DataAccess;
-
-public class Class1
+﻿namespace IdentityService.DataAccess
 {
+    public class Class1
+    {
+    }
 }

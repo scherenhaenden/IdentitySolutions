@@ -1,59 +1,61 @@
 using IdentityService.DataAccess.Database.ContextManagement;
 using IdentityService.DataAccess.Database.Core.Unities;
+using IdentityService.DataAccess.Database.Persistence.Configuration;
 using IdentityService.DataAccess.Database.Persistence.Domain.Global;
 using IdentityService.DataAccess.Database.Persistence.Unities;
 
-namespace IdentityService.DataAccess.Services.Installation;
-
-public interface IIdentityServiceInstallationDataAccessService
+namespace IdentityService.DataAccess.Services.Installation
 {
-    // Install Database/ Generate context and tables/ add first user
-    GlobalUser InstallAsync( InstallationModel model);
-}
-
-public class IdentityServiceInstallationDataAccessService: IIdentityServiceInstallationDataAccessService
-{
-    public GlobalUser InstallAsync(InstallationModel model)
+    public interface IIdentityServiceInstallationDataAccessService
     {
-        
-        IContextManager contextManager = new ContextManager();
-        var typeOfDataBae = Enum.GetName(model.DatabaseType).ToLower();
-        var context = contextManager.GenerateGlobalContext(typeOfDataBae, model.ConnectionString);
-            
-        IUnityOfWorkGlobal unityOfWorkGlobal = new UnitOfWorkGlobal(context);
+        // Install Database/ Generate context and tables/ add first user
+        GlobalUser Install( InstallationModel model);
 
-        GlobalUser user = new GlobalUser();
-
-        user.Email = model.AdminEmail;
-        user.Password = model.AdminPassword;
-        user.Username = model.AdminUserName;
-
-
-        unityOfWorkGlobal.GlobalUsers.Add(user);
-        context.SaveChanges();
-        return user;
-
-
-
-
-
+        public GlobalUser Install_Step_AddAminUser(InstallationModel model, IUnityOfWorkGlobal unityOfWorkGlobal);
     }
-}
 
-public class InstallationModel
-{
-    public DatabaseType DatabaseType { get; set; }
-    public string ConnectionString { get; set; }
-    public string AdminEmail { get; set; }
-    public string AdminUserName { get; set; }
-    public string AdminPassword { get; set; }
-    public string AdminPasswordConfirm { get; set; }
-}
+    public class IdentityServiceInstallationDataAccessService: IIdentityServiceInstallationDataAccessService
+    {
+        public GlobalUser Install(InstallationModel model)
+        {
+            var context = GenerateContext(model);
+            
+            IUnityOfWorkGlobal unityOfWorkGlobal = new UnitOfWorkGlobal(context);
 
-public enum DatabaseType
-{
-    MsSql,
-    Sqlite,
-    PostgreSql,
-    MSSQlS,
+            GlobalUser user = new GlobalUser();
+
+            user.Email = model.AdminEmail;
+            user.Password = model.AdminPassword;
+            user.Username = model.AdminUserName;
+            user.FirstName = model.AdminFirstName;
+            user.LastName = model.AdminLastName;
+
+
+            unityOfWorkGlobal.GlobalUsers.Add(user);
+            unityOfWorkGlobal.Save();
+            return user;
+        }
+        
+        private IdentityContextGlobal GenerateContext(InstallationModel model) {
+            
+            IContextManager contextManager = new ContextManager();
+            var typeOfDataBae = Enum.GetName(model.DatabaseType).ToLower();
+            var context = contextManager.GenerateGlobalContext(typeOfDataBae, model.ConnectionString);
+            return context;
+        }
+
+        public GlobalUser Install_Step_AddAminUser(InstallationModel model, IUnityOfWorkGlobal unityOfWorkGlobal)
+        {
+            GlobalUser user = new GlobalUser();
+
+            user.Email = model.AdminEmail;
+            user.Password = model.AdminPassword;
+            user.Username = model.AdminUserName;
+
+
+            unityOfWorkGlobal.GlobalUsers.Add(user);
+            unityOfWorkGlobal.Save();
+            return user;
+        }
+    }
 }

@@ -1,7 +1,9 @@
+using System.Diagnostics.CodeAnalysis;
 using IdentityService.DataAccess.Database.Core.BaseDomain;
 
 namespace IdentityService.DataAccess.Database.Tests.Helpers
 {
+    [ExcludeFromCodeCoverage]
     public class PropertiesTester
     {
         public static void AssertProperties (object objA, object objB)

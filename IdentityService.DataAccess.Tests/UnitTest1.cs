@@ -1,4 +1,4 @@
-using IdentityService.DataAccess.Tests._Setup;
+using Helpers.Configuration.Core;
 
 namespace IdentityService.DataAccess.Tests;
 

@@ -1,4 +1,5 @@
 using IdentityService.DataAccess.Database.Persistence.Domain.Global;
+using IdentityService.DataAccess.Services.Login.System.Models;
 
 namespace IdentityService.DataAccess.Services.Login.System;
 

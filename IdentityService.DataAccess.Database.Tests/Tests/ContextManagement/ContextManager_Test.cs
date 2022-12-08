@@ -1,4 +1,5 @@
 using IdentityService.DataAccess.Database.ContextManagement;
+using IdentityService.DataAccess.Database.ContextManagement.Services;
 using IdentityService.DataAccess.Database.Core.Unities;
 using IdentityService.DataAccess.Database.Persistence.Unities;
 using IdentityService.DataAccess.Database.Tests._Setup;
@@ -17,7 +18,7 @@ namespace IdentityService.DataAccess.Database.Tests.Tests.ContextManagement
             /*string databaseName="ContextManager_Test.db";
             //var connectionString = CreateString(CreateString());
             IGetDbConnection getDbConnection = new GetDbConnectionSqlite(databaseName);
-            _unityOfWorkGlobal = new UnitOfWorkGlobal(getDbConnection.GetConnectionGlobal());
+            _unityOfWorkGlobal = new UnityOfWorkGlobal(getDbConnection.GetConnectionGlobal());
             DeleteDatabase
         
         

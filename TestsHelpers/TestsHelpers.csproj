@@ -7,16 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.11" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\IdentityService.DataAccess.Database\IdentityService.DataAccess.Database.csproj" />
       <ProjectReference Include="..\Tests\Helpers\Helpers.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Services\Login\System\Core" />
     </ItemGroup>
 
 </Project>

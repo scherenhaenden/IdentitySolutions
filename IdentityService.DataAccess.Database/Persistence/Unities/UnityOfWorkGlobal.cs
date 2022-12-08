@@ -7,12 +7,12 @@ using IdentityService.DataAccess.Database.Persistence.Repositories;
 
 namespace IdentityService.DataAccess.Database.Persistence.Unities
 {
-    public class UnitOfWorkGlobal : IUnityOfWorkGlobal
+    public class UnityOfWorkGlobal : IUnityOfWorkGlobal
     {
     
         private readonly IdentityContextGlobal _context;
     
-        public UnitOfWorkGlobal(IdentityContextGlobal context)
+        public UnityOfWorkGlobal(IdentityContextGlobal context)
         {
             _context = context;
             GlobalUsers = InitObjects<GlobalUser>();

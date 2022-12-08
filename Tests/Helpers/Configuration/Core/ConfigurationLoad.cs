@@ -1,18 +1,12 @@
-using IdentityService.DataAccess.Tests._Setup.Model;
+using Helpers.Configuration.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace IdentityService.DataAccess.Tests._Setup;
-
-public interface IConfigurationLoad
-{
-    ConfigurationOfApplication LoadAndGetConfiguration();
-    
-    ConfigurationOfApplication LoadAndGetConfiguration(string environment);
-}
+namespace Helpers.Configuration.Core;
 
 public class ConfigurationLoad:IConfigurationLoad
 {
+    
     public ConfigurationOfApplication LoadAndGetConfiguration()
     {
         /*var configuration = new ConfigurationBuilder()

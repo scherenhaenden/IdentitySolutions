@@ -1,4 +1,5 @@
 using System.Net.Mail;
+using Helpers.Validations;
 using IdentityService.DataAccess.Database.Core.Domains.Global;
 using IdentityService.DataAccess.Database.Core.Domains.Tenant;
 

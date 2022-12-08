@@ -1,8 +1,10 @@
+using System.Diagnostics.CodeAnalysis;
 using IdentityService.DataAccess.Database.Persistence.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 namespace IdentityService.DataAccess.Database.Tests._Setup
 {
+    
     public interface IGetDbConnection
     {
         public void Init();
@@ -18,6 +20,7 @@ namespace IdentityService.DataAccess.Database.Tests._Setup
     
     }
 
+    [ExcludeFromCodeCoverage]
     public class GetDbConnectionInMemory : IGetDbConnection
     {
         public void Init()

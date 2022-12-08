@@ -8,10 +8,10 @@ namespace IdentityService.DataAccess.Database.Persistence.Domain.Global
 {
     [Index(nameof(Username), IsUnique = true)]
     [Index(nameof(Email), IsUnique = true)]
-    public class GlobalUser: BaseEntity, IGlobalUser
+    public class SystemlUser: BaseEntity, ISystemlUser
     {
         
-        public GlobalUser()
+        public SystemlUser()
         {
             DirectlyAssignClaims = new HashSet<GlobalClaim>();
             Roles = new HashSet<GlobalRole>();

@@ -7,6 +7,6 @@ namespace IdentityService.DataAccess.Database.Core.Domains.Global
         public string Name { get; set; }
         public string Description { get; set; }
         public string Domain { get; set; }
-    
+        public string Configuration { get; set; }
     }
 }

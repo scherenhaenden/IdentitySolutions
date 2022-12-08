@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using IdentityService.DataAccess.Database.Core.Configuration;
 using IdentityService.DataAccess.Database.Persistence.Domain;
 using IdentityService.DataAccess.Database.Persistence.Domain.Tenant;
@@ -5,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IdentityService.DataAccess.Database.Persistence.Configuration
 {
+    [ExcludeFromCodeCoverage]
     public class IdentityContext : DbContext, IContext
     {
         public IdentityContext(DbContextOptions<IdentityContext> options) : base(options)
@@ -16,8 +18,7 @@ namespace IdentityService.DataAccess.Database.Persistence.Configuration
             {
             
             }
-            finally{}
-        
+
         }
 
         public DbSet<UserClaim> Claims { get; set; } = null!;

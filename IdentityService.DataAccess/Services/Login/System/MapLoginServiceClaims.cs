@@ -101,7 +101,7 @@ public static class MapLoginServiceClaims
     
     // Map Users
     
-    public static GlobalUserCompactModel MapFromRequest(this GlobalUser requestModel)
+    public static GlobalUserCompactModel MapFromRequest(this SystemlUser requestModel)
     {
         return new GlobalUserCompactModel
         {
@@ -114,9 +114,9 @@ public static class MapLoginServiceClaims
         };
     }
     
-    public static GlobalUser MapFromResponse(this GlobalUserCompactModel requestModel)
+    public static SystemlUser MapFromResponse(this GlobalUserCompactModel requestModel)
     {
-        return new GlobalUser
+        return new SystemlUser
         {
             Guid = requestModel.Guid,
             Email = requestModel.Email,
@@ -127,7 +127,7 @@ public static class MapLoginServiceClaims
         };
     }
     
-    public static List<GlobalUserCompactModel> MapFromRequest(this List<GlobalUser> requestModel)
+    public static List<GlobalUserCompactModel> MapFromRequest(this List<SystemlUser> requestModel)
     {
         // Cast to List<GlobalUserCompactModel>
         var globalUserCompactModel = new List<GlobalUserCompactModel>();
@@ -139,10 +139,10 @@ public static class MapLoginServiceClaims
         return globalUserCompactModel;
     }
     
-    public static List<GlobalUser> MapFromResponse(this List<GlobalUserCompactModel> requestModel)
+    public static List<SystemlUser> MapFromResponse(this List<GlobalUserCompactModel> requestModel)
     {
-        // Cast to List<GlobalUser>
-        var globalUserCompactModel = new List<GlobalUser>();
+        // Cast to List<SystemlUser>
+        var globalUserCompactModel = new List<SystemlUser>();
         
         foreach (var eachUser in requestModel)
         {

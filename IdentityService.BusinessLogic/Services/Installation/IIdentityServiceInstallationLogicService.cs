@@ -33,7 +33,7 @@ namespace IdentityService.BusinessLogic.Services.Installation
         {
             IIdentityServiceInstallationDataAccessService installationDataAccessService = new IdentityServiceInstallationDataAccessService();
             var value = installationDataAccessService.Install(model);
-         
+
             // Obj to json
             var json = JsonConvert.SerializeObject(value);
             return json;

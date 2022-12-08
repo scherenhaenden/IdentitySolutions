@@ -1,4 +1,4 @@
-namespace IdentityService.DataAccess.Services.Login.System;
+namespace IdentityService.DataAccess.Services.Login.System.Models;
 
 public class GlobalClaimsDataAccessModel
 {

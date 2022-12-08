@@ -1,11 +1,10 @@
-using IdentityService.DataAccess.Database.Core.Unities;
-using IdentityService.DataAccess.Database.Persistence.Domain.Global;
+using IdentityService.DataAccess.Services.Login.System.Models;
 
 namespace IdentityService.DataAccess.Services.Login.System;
 
 public interface ILoginDataAccessService
 {
-    GlobalUserCompactModel GetGlobalUserCompactModel(string username, string email, string password);
+    GlobalUserCompactModel GetGlobalUserCompactModel(string usernameOrEmail, string password);
 }
 
 public class LoginDataAccessService : ILoginDataAccessService
@@ -18,39 +17,15 @@ public class LoginDataAccessService : ILoginDataAccessService
         _loginRepository = loginRepository;
         
     }
-    public GlobalUserCompactModel GetGlobalUserCompactModel(string username, string email, string password)
+
+    public GlobalUserCompactModel GetGlobalUserCompactModel(string usernameOrEmail, string password)
     {
-        var user =_loginRepository.GetGlobalUserCompactModel(username, email, password);
+        var user =_loginRepository.GetGlobalUserCompactModel(usernameOrEmail, password);
         if(user == null)
         {
             return null;
         }
         
         return user.MapFromRequest();
-    }
-}
-
-
-
-public interface ILoginRepository
-{
-    GlobalUser? GetGlobalUserCompactModel(string username, string email, string password);
-}
-
-public class LoginRepository : ILoginRepository
-{
-    private readonly IUnityOfWorkGlobal _unityOfWorkGlobal;
-
-    public LoginRepository(IUnityOfWorkGlobal unityOfWorkGlobal)
-    {
-        _unityOfWorkGlobal = unityOfWorkGlobal;
-    }
-    
-    
-    public GlobalUser? GetGlobalUserCompactModel(string username, string email, string password)
-    {
-        
-        return  _unityOfWorkGlobal.GlobalUsers.SingleOrDefault(x => x.Username == username && x.Email == email && x.Password == password);
-        
     }
 }

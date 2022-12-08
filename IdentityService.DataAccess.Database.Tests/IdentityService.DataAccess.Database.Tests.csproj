@@ -27,6 +27,15 @@
 
     <ItemGroup>
       <ProjectReference Include="..\IdentityService.DataAccess.Database\IdentityService.DataAccess.Database.csproj" />
+      <ProjectReference Include="..\Tests\Helpers\Helpers.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="appsettings.sqlite.json">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>

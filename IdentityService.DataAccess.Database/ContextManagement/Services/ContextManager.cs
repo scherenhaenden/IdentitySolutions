@@ -1,8 +1,7 @@
 using IdentityService.DataAccess.Database.ContextManagement.Models;
-using IdentityService.DataAccess.Database.ContextManagement.Services;
 using IdentityService.DataAccess.Database.Persistence.Configuration;
 
-namespace IdentityService.DataAccess.Database.ContextManagement
+namespace IdentityService.DataAccess.Database.ContextManagement.Services
 {
     public class ContextManager: IContextManager
     {

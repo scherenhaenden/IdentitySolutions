@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using IdentityService.DataAccess.Database.Core.Unities;
 using IdentityService.DataAccess.Database.Persistence.Unities;
 
@@ -7,6 +8,7 @@ namespace IdentityService.DataAccess.Database.Tests._Setup
     [NonParallelizable]
     [TestFixture]
     [FixtureLifeCycle(LifeCycle.SingleInstance)]
+    [ExcludeFromCodeCoverage]
     public class BaseSetup
     {
     
@@ -33,7 +35,7 @@ namespace IdentityService.DataAccess.Database.Tests._Setup
         {
             IGetDbConnection getDbConnection = new GetDbConnectionSqlite(database);
             getDbConnection.Init();
-            return new UnitOfWorkGlobal(getDbConnection.GetConnectionGlobal());
+            return new UnityOfWorkGlobal(getDbConnection.GetConnectionGlobal());
         }
 
         private void CreateConnection()

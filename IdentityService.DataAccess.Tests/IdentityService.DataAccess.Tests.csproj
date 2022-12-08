@@ -19,6 +19,7 @@
     <ItemGroup>
       <ProjectReference Include="..\IdentityService.DataAccess.Database\IdentityService.DataAccess.Database.csproj" />
       <ProjectReference Include="..\IdentityService.DataAccess\IdentityService.DataAccess.csproj" />
+      <ProjectReference Include="..\Tests\Helpers\Helpers.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -30,7 +31,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Source\Services\Login\System" />
+      <Folder Include="_Setup" />
     </ItemGroup>
 
 </Project>

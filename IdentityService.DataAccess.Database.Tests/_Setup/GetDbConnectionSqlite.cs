@@ -1,8 +1,10 @@
+using System.Diagnostics.CodeAnalysis;
 using IdentityService.DataAccess.Database.Persistence.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 namespace IdentityService.DataAccess.Database.Tests._Setup
 {
+    [ExcludeFromCodeCoverage]
     public class GetDbConnectionSqlite: IGetDbConnection
     {
         private readonly string _databaseName;

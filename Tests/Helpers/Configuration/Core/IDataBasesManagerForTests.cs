@@ -1,6 +1,6 @@
-using IdentityService.DataAccess.Services.Installation;
+using Helpers.Configuration.Models;
 
-namespace IdentityService.DataAccess.Tests._Setup;
+namespace Helpers.Configuration.Core;
 
 public interface IDataBasesManagerForTests
 {

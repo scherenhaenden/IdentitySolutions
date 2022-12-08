@@ -1,6 +1,4 @@
-using IdentityService.DataAccess.Services.Installation;
-
-namespace IdentityService.DataAccess.Tests._Setup.Model;
+namespace Helpers.Configuration.Models;
 
 public class ConfigurationOfApplication
 {
@@ -14,7 +12,7 @@ public class DataAccess
 
 public class DataBases
 {
-    public Global Global { get; set; }
+    public List<Global> Global { get; set; }
 }
 
 public class Global
@@ -30,4 +28,6 @@ public class Global
     
     public string ConnectionString { get; set; }
     public string ProviderName { get; set; }
+    
+    public string ContextName { get; set; }
 }

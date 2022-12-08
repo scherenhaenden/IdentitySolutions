@@ -1,4 +1,5 @@
 using IdentityService.DataAccess.Database.ContextManagement;
+using IdentityService.DataAccess.Database.ContextManagement.Services;
 using IdentityService.DataAccess.Database.Core.Unities;
 using IdentityService.DataAccess.Database.Persistence.Configuration;
 using IdentityService.DataAccess.Database.Persistence.Domain.Global;
@@ -9,18 +10,31 @@ namespace IdentityService.DataAccess.Services.Installation
     public interface IIdentityServiceInstallationDataAccessService
     {
         // Install Database/ Generate context and tables/ add first user
-        GlobalUser Install( InstallationModel model);
+        GlobalUser? Install( InstallationModel model);
 
-        public GlobalUser Install_Step_AddAminUser(InstallationModel model, IUnityOfWorkGlobal unityOfWorkGlobal);
+        public GlobalUser? Install_Step_AddAminUser(InstallationModel model, IUnityOfWorkGlobal unityOfWorkGlobal);
     }
 
     public class IdentityServiceInstallationDataAccessService: IIdentityServiceInstallationDataAccessService
     {
-        public GlobalUser Install(InstallationModel model)
+        
+        
+        
+        public GlobalUser? Install(InstallationModel model)
         {
+            
+            
+            var errors = model.ValidateWithMessage();
+            // need to add logs
+            if (errors.Any())
+            {
+                return null;
+            }
+            
+            
             var context = GenerateContext(model);
             
-            IUnityOfWorkGlobal unityOfWorkGlobal = new UnitOfWorkGlobal(context);
+            IUnityOfWorkGlobal unityOfWorkGlobal = new UnityOfWorkGlobal(context);
 
             GlobalUser user = new GlobalUser();
 
@@ -29,6 +43,7 @@ namespace IdentityService.DataAccess.Services.Installation
             user.Username = model.AdminUserName;
             user.FirstName = model.AdminFirstName;
             user.LastName = model.AdminLastName;
+
 
 
             unityOfWorkGlobal.GlobalUsers.Add(user);

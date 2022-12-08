@@ -1,8 +1,9 @@
-namespace IdentityService.BusinessLogic.Domains.Web.Services.Core;
-
-public interface IInitService
+namespace IdentityService.BusinessLogic.Domains.Web.Services.Core
 {
-    public Task InitAsync();
+    public interface IInitService
+    {
+        public Task InitAsync();
     
     
+    }
 }

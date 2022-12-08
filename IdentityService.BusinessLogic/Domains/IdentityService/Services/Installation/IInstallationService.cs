@@ -1,7 +1,8 @@
-namespace IdentityService.BusinessLogic.Domains.IdentityService.Services.Installation;
-
-public interface IInstallationService
+namespace IdentityService.BusinessLogic.Domains.IdentityService.Services.Installation
 {
-    Task<bool> InstallAsync();
+    public interface IInstallationService
+    {
+        Task<bool> InstallAsync();
 
+    }
 }

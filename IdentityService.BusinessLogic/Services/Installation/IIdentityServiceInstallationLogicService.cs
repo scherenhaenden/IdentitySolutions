@@ -1,45 +1,46 @@
 using IdentityService.DataAccess.Services.Installation;
 using Newtonsoft.Json;
 
-namespace IdentityService.BusinessLogic.Services.Installation;
-
-public interface IIdentityServiceInstallationLogicService
+namespace IdentityService.BusinessLogic.Services.Installation
 {
-    object Install(InstallationModel model);
-}
-
-public class IdentityServiceInstallationLogicService : IIdentityServiceInstallationLogicService
-{
-    /*private readonly IIdentityServiceDbContext _dbContext;
-    private readonly IPasswordHasher _passwordHasher;
-
-    public InstallationService(IIdentityServiceDbContext dbContext, IPasswordHasher passwordHasher)
+    public interface IIdentityServiceInstallationLogicService
     {
-        _dbContext = dbContext;
-        _passwordHasher = passwordHasher;
+        object Install(InstallationModel model);
     }
 
-    public async Task InstallAsync()
+    public class IdentityServiceInstallationLogicService : IIdentityServiceInstallationLogicService
     {
-        await _dbContext.Database.MigrateAsync();
-
-        if (!_dbContext.Users.Any())
+        /*private readonly IIdentityServiceDbContext _dbContext;
+        private readonly IPasswordHasher _passwordHasher;
+    
+        public InstallationService(IIdentityServiceDbContext dbContext, IPasswordHasher passwordHasher)
         {
-            var user = new User
+            _dbContext = dbContext;
+            _passwordHasher = passwordHasher;
+        }
+    
+        public async Task InstallAsync()
+        {
+            await _dbContext.Database.MigrateAsync();
+    
+            if (!_dbContext.SystemUsers.Any())
             {
-                Id = Guid.NewGuid(),
-                Email = "*/
-    public object Install(InstallationModel model)
-    {
-        IIdentityServiceInstallationDataAccessService installationDataAccessService = new IdentityServiceInstallationDataAccessService();
-         var value = installationDataAccessService.InstallAsync(model);
-         
-         // Obj to json
+                var user = new User
+                {
+                    Id = Guid.NewGuid(),
+                    Email = "*/
+        public object Install(InstallationModel model)
+        {
+            IIdentityServiceInstallationDataAccessService installationDataAccessService = new IdentityServiceInstallationDataAccessService();
+            var value = installationDataAccessService.Install(model);
+
+            // Obj to json
             var json = JsonConvert.SerializeObject(value);
             return json;
 
-    }
+        }
    
+    }
 }
 /*
 public class InstallationModel

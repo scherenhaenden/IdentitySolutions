@@ -2,26 +2,31 @@ using IdentityService.DataAccess.Database.Core.Configuration;
 using IdentityService.DataAccess.Database.Persistence.Domain.Global;
 using Microsoft.EntityFrameworkCore;
 
-namespace IdentityService.DataAccess.Database.Persistence.Configuration;
-
-public class IdentityContextGlobal : DbContext, IContextGlobal
+namespace IdentityService.DataAccess.Database.Persistence.Configuration
 {
-    public IdentityContextGlobal(DbContextOptions<IdentityContextGlobal> options) : base(options)
+    public class IdentityContextGlobal : DbContext, IContextGlobal
     {
-        try
+        public IdentityContextGlobal(DbContextOptions<IdentityContextGlobal> options) : base(options)
         {
-            base.Database.EnsureCreated();   
-        }catch(Exception ex)
-        {
+            try
+            {
+                base.Database.EnsureCreated();   
+            }catch(Exception ex)
+            {
             
-        }
-        finally{}
+            }
+            finally{}
         
-    }
+        }
 
-    public DbSet<GlobalUser> GlobalUsers { get; set; }
+        public DbSet<GlobalUser> GlobalUsers { get; set; }
     
-    public DbSet<GlobalAddress> GlobalAddresses { get; set; }
+        public DbSet<SystemAddress> GlobalAddresses { get; set; }
     
-    public DbSet<GlobalRole> GlobalRoles { get; set; }
+        public DbSet<GlobalRole> GlobalRoles { get; set; }
+
+        public DbSet<GlobalClaim> GlobalUserClaims { get; set; }
+
+        //GlobalUserClaim
+    }
 }

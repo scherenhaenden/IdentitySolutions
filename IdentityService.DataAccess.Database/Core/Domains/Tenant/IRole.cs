@@ -1,9 +1,10 @@
 using IdentityService.DataAccess.Database.Core.BaseDomain;
 
-namespace IdentityService.DataAccess.Database.Core.Domains.Tenant;
-
-public interface IRole: IBaseEntity
+namespace IdentityService.DataAccess.Database.Core.Domains.Tenant
 {
-    public string CodeName { get; set; }
-    public string NormalizedName { get; set; }
+    public interface IRole: IBaseEntity
+    {
+        public string CodeName { get; set; }
+        public string NormalizedName { get; set; }
+    }
 }

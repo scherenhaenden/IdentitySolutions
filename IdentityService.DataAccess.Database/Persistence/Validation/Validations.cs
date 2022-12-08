@@ -1,71 +1,73 @@
 using System.Net.Mail;
+using Helpers.Validations;
 using IdentityService.DataAccess.Database.Core.Domains.Global;
 using IdentityService.DataAccess.Database.Core.Domains.Tenant;
 
-namespace IdentityService.DataAccess.Database.Persistence.Validation;
-
-public static class Validations
+namespace IdentityService.DataAccess.Database.Persistence.Validation
 {
-    public static List<string> GlobalUserValidation(this IGlobalUser user)
+    public static class Validations
     {
-        var messages = new List<string>();
-        // Validate email
-        try
+        public static List<string> GlobalUserValidation(this IGlobalUser user)
         {
-            _ = new MailAddress(user.Email);
-        }
-        catch (Exception)
-        {
+            var messages = new List<string>();
+            // Validate email
+            try
+            {
+                _ = new MailAddress(user.Email);
+            }
+            catch (Exception)
+            {
             
-            messages.Add(ModelValidationMessages.EMAIL_IS_NOT_VALID);
-        }
+                messages.Add(ModelValidationMessages.EMAIL_IS_NOT_VALID);
+            }
         
-        // Validate username
-        if (user.Username?.Length < 3)
-        {
-            messages.Add(ModelValidationMessages.USERNAME_IS_NOT_VALID);
-        }
+            // Validate username
+            if (user.Username?.Length < 3)
+            {
+                messages.Add(ModelValidationMessages.USERNAME_IS_NOT_VALID);
+            }
         
-        // Validate password
-        // TODO: this is not a good way to validate password
+            // Validate password
+            // TODO: this is not a good way to validate password
         
-        if (user.Password?.Length < 8)
-        {
-            messages.Add(ModelValidationMessages.PASSWORD_IS_NOT_VALID);
-        }
+            if (user.Password?.Length < 8)
+            {
+                messages.Add(ModelValidationMessages.PASSWORD_IS_NOT_VALID);
+            }
 
-        return messages;
-    }
+            return messages;
+        }
     
     
-    public static List<string> UserValidation(this IUser user)
-    {
-        var messages = new List<string>();
-        // Validate email
-        try
+        public static List<string> UserValidation(this IUser user)
         {
-            _ = new MailAddress(user.Email);
-        }
-        catch (Exception)
-        {
+            var messages = new List<string>();
+            // Validate email
+            try
+            {
+                _ = new MailAddress(user.Email);
+            }
+            catch (Exception)
+            {
             
-            messages.Add(ModelValidationMessages.EMAIL_IS_NOT_VALID);
-        }
+                messages.Add(ModelValidationMessages.EMAIL_IS_NOT_VALID);
+            }
         
-        // Validate username
-        if (user.Username?.Length < 3)
-        {
-            messages.Add(ModelValidationMessages.USERNAME_IS_NOT_VALID);
-        }
+            // Validate username
+            if (user.Username?.Length < 3)
+            {
+                messages.Add(ModelValidationMessages.USERNAME_IS_NOT_VALID);
+            }
         
-        // Validate password
-        // TODO: this is not a good way to validate password
+            // Validate password
+            // TODO: this is not a good way to validate password
         
-        if (user.Password?.Length < 8)
-        {
-            messages.Add(ModelValidationMessages.PASSWORD_IS_NOT_VALID);
-        }
+            if (user.Password?.Length < 8)
+            {
+                messages.Add(ModelValidationMessages.PASSWORD_IS_NOT_VALID);
+            }
 
-        return messages;
+            return messages;
+        }
     }
 }

@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using IdentityService.DataAccess.Database.Core.Configuration;
 using IdentityService.DataAccess.Database.Persistence.Domain.Global;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +20,7 @@ namespace IdentityService.DataAccess.Database.Persistence.Configuration
         
         }
 
-        public DbSet<GlobalUser> GlobalUsers { get; set; }
+        public DbSet<SystemlUser> GlobalUsers { get; set; }
     
         public DbSet<SystemAddress> GlobalAddresses { get; set; }
     

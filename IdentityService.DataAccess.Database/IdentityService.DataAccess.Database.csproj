@@ -26,4 +26,8 @@
       <ProjectReference Include="..\Tests\Helpers\Helpers.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Core\Extensions" />
+    </ItemGroup>
+
 </Project>

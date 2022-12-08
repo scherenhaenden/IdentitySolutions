@@ -7,8 +7,8 @@ namespace IdentityService.DataAccess.Database.Core.Configuration
     {
         // Add all the fields from the name space IdentityService.DataAccess.Database.Core.Domain
         
-        // Add Dbset for GlobalUser
-        public DbSet<GlobalUser> GlobalUsers { get; set; }
+        // Add Dbset for SystemlUser
+        public DbSet<SystemlUser> GlobalUsers { get; set; }
     
         // Add Dbset for SystemAddress
         public DbSet<SystemAddress> GlobalAddresses { get; set; }

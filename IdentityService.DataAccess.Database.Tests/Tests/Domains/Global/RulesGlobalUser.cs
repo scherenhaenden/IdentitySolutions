@@ -32,7 +32,7 @@ namespace IdentityService.DataAccess.Database.Tests.Tests.Domains.Global
         public void DDD_01_Global_Global_AddNewUser_shouldPass()
         {
             //_unitOfWork = base.GetUnitOfWork(_database);
-            var globalUser = new GlobalUser();
+            var globalUser = new SystemlUser();
             globalUser.Email = "testl@test.com";
             globalUser.Password = "test-test-test-test";
             globalUser.Username = "test";
@@ -56,7 +56,7 @@ namespace IdentityService.DataAccess.Database.Tests.Tests.Domains.Global
         {
 
             //_unitOfWork = base.GetUnitOfWork(_database);
-            var globalUser = new GlobalUser();
+            var globalUser = new SystemlUser();
             globalUser.Email = "testl@test.com";
             globalUser.Password = "test-test-test-test";
             globalUser.Username = "test";
@@ -73,7 +73,7 @@ namespace IdentityService.DataAccess.Database.Tests.Tests.Domains.Global
         {
 
             //_unitOfWork = base.GetUnitOfWork(_database);
-            var globalUser = new GlobalUser();
+            var globalUser = new SystemlUser();
             globalUser.Email = "testasa.com";
             globalUser.Password = "tes";
             globalUser.Username = "t";
@@ -87,7 +87,7 @@ namespace IdentityService.DataAccess.Database.Tests.Tests.Domains.Global
         {
             
             //_unitOfWork = base.GetUnitOfWork(_database);
-            var globalUser = new GlobalUser();
+            var globalUser = new SystemlUser();
             globalUser.Email = "testl-1@test.com";
             globalUser.Password = "test-test-test-test";
             globalUser.Username = "test-2";

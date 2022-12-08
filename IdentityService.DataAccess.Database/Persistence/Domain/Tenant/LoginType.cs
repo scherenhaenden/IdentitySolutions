@@ -1,8 +1,8 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
+using Helpers.Parsers.Extensions;
 using IdentityService.DataAccess.Database.Core.BaseDomain;
 using IdentityService.DataAccess.Database.Core.Domains.Tenant;
-using IdentityService.DataAccess.Database.Core.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 //using Org.BouncyCastle.Asn1.X509.Qualified;
@@ -12,8 +12,6 @@ namespace IdentityService.DataAccess.Database.Persistence.Domain.Tenant
     [Index(nameof(TypeString), IsUnique = true)]
     public class LoginType :BaseEntity,  ILoginType
     {
-    
-    
         [Column("LoginTypeName")]
         public string TypeString
         {

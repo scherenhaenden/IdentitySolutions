@@ -12,7 +12,7 @@ public class LoginRepository : ILoginRepository
         _unityOfWorkGlobal = unityOfWorkGlobal;
     }
 
-    public GlobalUser? GetGlobalUserCompactModel(string usernameOrEemail, string password)
+    public SystemlUser? GetGlobalUserCompactModel(string usernameOrEemail, string password)
     {
         return _unityOfWorkGlobal.GlobalUsers.SingleOrDefault(x => (x.Username == usernameOrEemail || x.Email == usernameOrEemail) && x.Password == password);
     }

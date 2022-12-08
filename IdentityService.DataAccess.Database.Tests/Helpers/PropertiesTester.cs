@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using IdentityService.DataAccess.Database.Core.BaseDomain;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace IdentityService.DataAccess.Database.Tests.Helpers
 {
@@ -15,6 +16,51 @@ namespace IdentityService.DataAccess.Database.Tests.Helpers
                 var valueA = property.GetValue(objA);
                 var valueB = property.GetValue(objB);
                 Assert.AreEqual(valueA, valueB);
+            }
+        }
+        
+        // Asset all properties of generic type
+        public static void AssertProperties<T>(T objA, T objB)
+        {
+            var type = typeof(T);
+            var properties = type.GetProperties();
+            foreach (var property in properties)
+            {
+                var valueA = property.GetValue(objA);
+                var valueB = property.GetValue(objB);
+                Assert.AreEqual(valueA, valueB);
+            }
+        }
+        
+        // Asset all properties of generic type are not null
+        public static void AssertPropertiesNotNull<T>(T objA)
+        {
+            var type = typeof(T);
+            var properties = type.GetProperties();
+            foreach (var property in properties)
+            {
+                var valueA = property.GetValue(objA);
+                Assert.IsNotNull(valueA);
+            }
+        }
+        
+        // Asset all properties of generic type fields of object are not null
+        public static void AssertPropertiesNotNull<T>(object objA)
+        {
+            var type = typeof(T);
+            var properties = type.GetProperties();
+            
+            
+            
+            // get properties of type T
+            var propertiesOfType = properties
+                .Where(x => x.GetType() == type);
+          
+            
+            foreach (var property in properties)
+            {
+                var valueA = property.GetValue(objA);
+                Assert.IsNotNull(valueA);
             }
         }
         

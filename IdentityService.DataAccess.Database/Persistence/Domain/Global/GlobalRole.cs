@@ -11,11 +11,11 @@ namespace IdentityService.DataAccess.Database.Persistence.Domain.Global
         public GlobalRole()
         {
             SystemClaims = new HashSet<GlobalClaim>();
-            SystemUsers = new HashSet<GlobalUser>();
+            SystemUsers = new HashSet<SystemlUser>();
         }
         
         public virtual ICollection<GlobalClaim> SystemClaims { get; set; }
-        public virtual ICollection<GlobalUser> SystemUsers { get; set; }
+        public virtual ICollection<SystemlUser> SystemUsers { get; set; }
         
         public string Name { get; set; }
         public string Description { get; set; }

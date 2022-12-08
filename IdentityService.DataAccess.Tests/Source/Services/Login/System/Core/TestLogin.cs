@@ -20,10 +20,6 @@ public class TestLogin
     [Test, Order(1)]
     public void TestLogin_Install_ThenLogin_ShouldPass()
     {
-
-
-        
-        
         IConfigurationLoad configurationLoad = new ConfigurationLoad();
         _configuration = configurationLoad.LoadAndGetConfiguration("sqlite");
         var globalDb = _configuration.DataAccess.DataBases.Global.First(x => x.ContextName == "TestLogin");
@@ -55,6 +51,7 @@ public class TestLogin
         installationModel.AdminUserName = "AdminPass";
         installationModel.AdminEmail = "AdminPass@email.com";
         installationModel.AdminPassword = "AddminPass";
+        installationModel.AdminPasswordConfirm = "AddminPass";
         installationModel.AdminFirstName = "AddminPass";
         installationModel.AdminLastName = "AdminPass";
         installationModel.ConnectionString = globalDb.ConnectionString;
@@ -73,7 +70,15 @@ public class TestLogin
         var compactModel2 = loginDataAccessService.GetGlobalUserCompactModel(installationModel.AdminEmail , installationModel.AdminPassword );
         
         Assert.IsNotNull(compactModel2);
+        _dataBasesManagerForTests.DatabaseTearDown();
         
         
+    }
+    
+    // CleanUp
+    [TearDown]
+    public void TearDown()
+    {
+        _dataBasesManagerForTests.DatabaseTearDown();
     }
 }

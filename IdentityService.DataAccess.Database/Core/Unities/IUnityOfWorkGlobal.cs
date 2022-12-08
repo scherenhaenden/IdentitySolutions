@@ -5,8 +5,8 @@ namespace IdentityService.DataAccess.Database.Core.Unities
 {
     public interface IUnityOfWorkGlobal : IDisposable
     {
-        // Add Dbset for GlobalUser
-        public IRepository<GlobalUser> GlobalUsers { get; set; }
+        // Add Dbset for SystemlUser
+        public IRepository<SystemlUser> GlobalUsers { get; set; }
         
         // Add Dbset for SystemAddress
         public IRepository<SystemAddress> GlobalAddresses { get; set; }

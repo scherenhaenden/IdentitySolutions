@@ -3,7 +3,7 @@ using IdentityService.DataAccess.Database.Persistence.Domain.Global;
 
 namespace IdentityService.DataAccess.Database.Core.Domains.Global
 {
-    public interface IGlobalRole: IBaseEntity
+    public interface ISystemRole: IBaseEntity
     {
         
         

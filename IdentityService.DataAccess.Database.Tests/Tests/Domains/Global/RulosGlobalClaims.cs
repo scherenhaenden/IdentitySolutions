@@ -30,7 +30,7 @@ public class RulosGlobalClaims:BaseSetup
     [Test, Order(1)]
     public void DDD_01_Global_Claims_AddNew_shouldPass()
     {
-        var globalClaim = new GlobalClaim();
+        var globalClaim = new SystemClaim();
         globalClaim.Name = "Test";
         globalClaim.Description = "Test";
         globalClaim.Code = "Test";
@@ -56,7 +56,7 @@ public class RulosGlobalClaims:BaseSetup
     [Test, Order(2)]
     public void DDD_02_Global_Claims_AddNew_shouldNotPass()
     {
-        var globalClaim = new GlobalClaim();
+        var globalClaim = new SystemClaim();
         globalClaim.Name = "Test";
         globalClaim.Description = "Test";
         globalClaim.Code = "Test";

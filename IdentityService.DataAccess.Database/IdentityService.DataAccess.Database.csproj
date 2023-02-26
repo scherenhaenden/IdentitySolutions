@@ -23,6 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\EFCoreDataContextManager\EFCoreDataContextManager.csproj" />
       <ProjectReference Include="..\Tests\Helpers\Helpers.csproj" />
     </ItemGroup>
 

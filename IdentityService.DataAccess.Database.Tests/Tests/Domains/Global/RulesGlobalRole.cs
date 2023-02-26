@@ -30,7 +30,7 @@ namespace IdentityService.DataAccess.Database.Tests.Tests.Domains.Global
         [Test, Order(1)]
         public void DDD_01_Global_Global_AddNewRole_shouldPass()
         {
-            var role = new GlobalRole();
+            var role = new SystemRole();
             role.Name = "Test Role";
             role.Description = "Test Role Description";
         
@@ -47,7 +47,7 @@ namespace IdentityService.DataAccess.Database.Tests.Tests.Domains.Global
         [Test, Order(2)]
         public void DDD_02_Global_Global_AddNewRole_shouldNotPass()
         {
-            var role = new GlobalRole();
+            var role = new SystemRole();
             role.Name = "Test Role";
             role.Description = "Test Role Description";
             

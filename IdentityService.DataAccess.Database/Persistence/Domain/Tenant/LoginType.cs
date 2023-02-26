@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IdentityService.DataAccess.Database.Persistence.Domain.Tenant
 {
-    [Index(nameof(TypeString), IsUnique = true)]
+    [Microsoft.EntityFrameworkCore.Index(nameof(TypeString), IsUnique = true)]
     public class LoginType :BaseEntity,  ILoginType
     {
         [Column("LoginTypeName")]

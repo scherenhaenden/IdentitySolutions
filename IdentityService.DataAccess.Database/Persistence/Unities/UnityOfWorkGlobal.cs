@@ -15,10 +15,10 @@ namespace IdentityService.DataAccess.Database.Persistence.Unities
         public UnityOfWorkGlobal(IdentityContextGlobal context)
         {
             _context = context;
-            GlobalUsers = InitObjects<SystemlUser>();
+            GlobalUsers = InitObjects<SystemUser>();
             GlobalAddresses = InitObjects<SystemAddress>();
-            GlobalRoles = InitObjects<GlobalRole>();
-            GlobalUserClaims = InitObjects<GlobalClaim>();
+            GlobalRoles = InitObjects<SystemRole>();
+            GlobalUserClaims = InitObjects<SystemClaim>();
         }
     
         private  IRepository<T> InitObjects<T>()  where T : BaseEntity, IBaseEntity
@@ -33,17 +33,17 @@ namespace IdentityService.DataAccess.Database.Persistence.Unities
             _context.Dispose();
         }
 
-        // Add Dbset for SystemlUser
-        public IRepository<SystemlUser> GlobalUsers { get; set; }
+        // Add Dbset for SystemUser
+        public IRepository<SystemUser> GlobalUsers { get; set; }
         
         // Add Dbset for SystemAddress
         public IRepository<SystemAddress> GlobalAddresses { get; set; }
         
-        // Add Dbset for GlobalRole
-        public IRepository<GlobalRole> GlobalRoles { get; set; }
+        // Add Dbset for SystemRole
+        public IRepository<SystemRole> GlobalRoles { get; set; }
         
         // Add Dbset for GlobalUserClaim
-        public IRepository<GlobalClaim> GlobalUserClaims { get; set; }
+        public IRepository<SystemClaim> GlobalUserClaims { get; set; }
 
         public bool Save()
         {

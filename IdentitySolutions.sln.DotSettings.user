@@ -1,6 +1,9 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">/Users/edwardflores/Library/Caches/JetBrains/Rider2022.2/resharper-host/temp/Rider/vAny/CoverageData/_IdentitySolutions.233955603/Snapshot/snapshot.utdcvr</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=18031363_002Df3c4_002D4c88_002Dad55_002Dedf12f6e3bd1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Session" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;
+  &lt;Assembly Path="/Users/edwardflores/.nuget/packages/k4os.hash.xxhash/1.0.6/lib/netstandard2.0/K4os.Hash.xxHash.dll" /&gt;
+&lt;/AssemblyExplorer&gt;</s:String>
+	
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=18031363_002Df3c4_002D4c88_002Dad55_002Dedf12f6e3bd1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Session" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;Or&gt;
     &lt;And&gt;
       &lt;TestAncestor&gt;
@@ -25,7 +28,7 @@
 	
 	
 	
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=dae35f8a_002D7f65_002D4d78_002D9f0b_002D69cecd282895/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from &amp;lt;Tests&amp;gt;\&amp;lt;IdentityService.DataAccess.Database.Tests&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=dae35f8a_002D7f65_002D4d78_002D9f0b_002D69cecd282895/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from &amp;lt;Tests&amp;gt;\&amp;lt;IdentityService.DataAccess.Database.Tests&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;Or&gt;
     &lt;Project Location="/Users/edwardflores/Projects/Development/IdentitySolutions/IdentityService - Solutions and Test/IdentityService.DataAccess.Database.Tests" Presentation="&amp;lt;Tests&amp;gt;\&amp;lt;IdentityService.DataAccess.Database.Tests&amp;gt;" /&gt;
     &lt;ProjectFile&gt;D4D90D25-A437-47CD-B736-109A1395C56D/d:Services/d:Installation/f:IIdentityServiceInstallationLogicService_Tests.cs&lt;/ProjectFile&gt;

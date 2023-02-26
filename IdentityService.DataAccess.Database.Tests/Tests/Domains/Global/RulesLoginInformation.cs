@@ -28,7 +28,7 @@ namespace IdentityService.DataAccess.Database.Tests.Tests.Domains.Global
         public void DDD_01_Global_Global_AddNewTenant_shouldPass()
         {
             //_unitOfWork = base.GetUnitOfWork(_database);
-            var globalUser = new SystemlUser();
+            var globalUser = new SystemUser();
             globalUser.Email = "testl@test.com";
             globalUser.Password = "test";
             globalUser.Username = "test";

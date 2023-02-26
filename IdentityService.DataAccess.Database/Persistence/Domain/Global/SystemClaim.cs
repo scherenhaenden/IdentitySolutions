@@ -6,7 +6,7 @@ namespace IdentityService.DataAccess.Database.Persistence.Domain.Global;
 
 [Index(nameof(Name), IsUnique = true)]
 [Index(nameof(Code), IsUnique = true)]
-public class GlobalClaim:  BaseEntity, IGlobalClaim
+public class SystemClaim:  BaseEntity, ISystemClaim
 {
     public string Description { get; set; }
     public string Name { get; set; }

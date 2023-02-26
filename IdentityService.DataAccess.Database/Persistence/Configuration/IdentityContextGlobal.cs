@@ -20,13 +20,13 @@ namespace IdentityService.DataAccess.Database.Persistence.Configuration
         
         }
 
-        public DbSet<SystemlUser> GlobalUsers { get; set; }
+        public DbSet<SystemUser> GlobalUsers { get; set; }
     
         public DbSet<SystemAddress> GlobalAddresses { get; set; }
     
-        public DbSet<GlobalRole> GlobalRoles { get; set; }
+        public DbSet<SystemRole> GlobalRoles { get; set; }
 
-        public DbSet<GlobalClaim> GlobalUserClaims { get; set; }
+        public DbSet<SystemClaim> GlobalUserClaims { get; set; }
 
         //GlobalUserClaim
     }

@@ -10,9 +10,9 @@ namespace IdentityService.DataAccess.Services.Installation
     public interface IIdentityServiceInstallationDataAccessService
     {
         // Install Database/ Generate context and tables/ add first user
-        SystemlUser? Install( InstallationModel model);
+        SystemUser? Install( InstallationModel model);
 
-        public SystemlUser? Install_Step_AddAminUser(InstallationModel model, IUnityOfWorkGlobal unityOfWorkGlobal);
+        public SystemUser? Install_Step_AddAminUser(InstallationModel model, IUnityOfWorkGlobal unityOfWorkGlobal);
     }
 
     public class IdentityServiceInstallationDataAccessService: IIdentityServiceInstallationDataAccessService
@@ -20,7 +20,7 @@ namespace IdentityService.DataAccess.Services.Installation
         
         
         
-        public SystemlUser? Install(InstallationModel model)
+        public SystemUser? Install(InstallationModel model)
         {
             
             
@@ -36,7 +36,7 @@ namespace IdentityService.DataAccess.Services.Installation
             
             IUnityOfWorkGlobal unityOfWorkGlobal = new UnityOfWorkGlobal(context);
 
-            SystemlUser user = new SystemlUser();
+            SystemUser user = new SystemUser();
 
             user.Email = model.AdminEmail;
             user.Password = model.AdminPassword;
@@ -59,9 +59,9 @@ namespace IdentityService.DataAccess.Services.Installation
             return context;
         }
 
-        public SystemlUser Install_Step_AddAminUser(InstallationModel model, IUnityOfWorkGlobal unityOfWorkGlobal)
+        public SystemUser Install_Step_AddAminUser(InstallationModel model, IUnityOfWorkGlobal unityOfWorkGlobal)
         {
-            SystemlUser user = new SystemlUser();
+            SystemUser user = new SystemUser();
 
             user.Email = model.AdminEmail;
             user.Password = model.AdminPassword;

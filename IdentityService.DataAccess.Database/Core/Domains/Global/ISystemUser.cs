@@ -2,14 +2,13 @@ using IdentityService.DataAccess.Database.Core.BaseDomain;
 
 namespace IdentityService.DataAccess.Database.Core.Domains.Global
 {
-    public interface ISystemlUser: IBaseEntity
+    public interface ISystemUser: IBaseEntity
     {
         public string Email { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public Guid AddressGuid { get; set; }
-        public Guid Tenant { get; set; }
-        
+
         public string FirstName { get; set; }
         
         public string LastName { get; set; } 

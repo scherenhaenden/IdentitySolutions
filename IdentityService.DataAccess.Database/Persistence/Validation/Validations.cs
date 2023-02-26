@@ -7,7 +7,7 @@ namespace IdentityService.DataAccess.Database.Persistence.Validation
 {
     public static class Validations
     {
-        public static List<string> GlobalUserValidation(this ISystemlUser user)
+        public static List<string> GlobalUserValidation(this ISystemUser user)
         {
             var messages = new List<string>();
             // Validate email

@@ -8,13 +8,13 @@ namespace IdentityService.DataAccess.Database.Persistence.Domain.Global
 {
     [Index(nameof(Username), IsUnique = true)]
     [Index(nameof(Email), IsUnique = true)]
-    public class SystemlUser: BaseEntity, ISystemlUser
+    public class SystemUser: BaseEntity, ISystemUser
     {
         
-        public SystemlUser()
+        public SystemUser()
         {
-            DirectlyAssignClaims = new HashSet<GlobalClaim>();
-            Roles = new HashSet<GlobalRole>();
+            DirectlyAssignClaims = new HashSet<SystemClaim>();
+            Roles = new HashSet<SystemRole>();
         }
         
         
@@ -24,15 +24,18 @@ namespace IdentityService.DataAccess.Database.Persistence.Domain.Global
         [Required]
         public string Username { get; set; } = null!;
         
+        [Required]
         public string FirstName { get; set; } = null!;
         
+        [Required]
         public string LastName { get; set; } = null!;
+        
+        [Required]
         public string Password { get; set; } = null!;
         public Guid AddressGuid { get; set; }
-        public Guid Tenant { get; set; }
 
-        public virtual ICollection<GlobalClaim>? DirectlyAssignClaims{ get; set; }
-        public virtual ICollection<GlobalRole>? Roles { get; set; }
+        public virtual ICollection<SystemClaim>? DirectlyAssignClaims{ get; set; }
+        public virtual ICollection<SystemRole>? Roles { get; set; }
 
         public List<string> ValidateWithMessage()
         {

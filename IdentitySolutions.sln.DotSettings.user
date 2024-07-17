@@ -2,7 +2,8 @@
 	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;
   &lt;Assembly Path="/Users/edwardflores/.nuget/packages/k4os.hash.xxhash/1.0.6/lib/netstandard2.0/K4os.Hash.xxHash.dll" /&gt;
 &lt;/AssemblyExplorer&gt;</s:String>
-	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">/Users/edwardflores/Library/Caches/JetBrains/Rider2023.1/resharper-host/temp/Rider/vAny/CoverageData/_IdentitySolutions.233955603/Snapshot/snapshot.utdcvr</s:String>
+	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">/Users/edwardflores/Library/Caches/JetBrains/Rider2023.2/resharper-host/temp/Rider/vAny/CoverageData/_IdentitySolutions.233955603/Snapshot/snapshot.utdcvr</s:String>
+	
 	
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=18031363_002Df3c4_002D4c88_002Dad55_002Dedf12f6e3bd1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Session" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;Or&gt;
@@ -34,14 +35,8 @@
     &lt;TestId&gt;NUnit3x::6CFCFBB1-D320-4EEE-8C52-C95EFEC00F0E::net6.0::EasyEfDb.Tests.Core.ConfigureContextTests&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3ba5a9e0_002D718a_002D4c87_002D95fd_002D110a47066737/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="InstallationTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;Or&gt;
-    &lt;TestAncestor&gt;
-      &lt;TestId&gt;NUnit3x::82BF51F1-16EA-4CB8-9699-CF3A3D3CE2B2::net7.0::IdentityService.DataAccess.Tests.Source.Services.Installation.InstallationTest&lt;/TestId&gt;
-    &lt;/TestAncestor&gt;
-    &lt;ProjectFile&gt;6CFCFBB1-D320-4EEE-8C52-C95EFEC00F0E/d:Core/f:ConfigureContextTests.cs&lt;/ProjectFile&gt;
-    &lt;Project Location="/Users/edwardflores/Projects/Development/IdentitySolutions/IdentityService - Solutions and Test/EasyEfDb2.Tests" Presentation="&amp;lt;ExtrinsicalHelpers&amp;gt;\&amp;lt;EasyEfDb2.Tests&amp;gt;" /&gt;
-  &lt;/Or&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3ba5a9e0_002D718a_002D4c87_002D95fd_002D110a47066737/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="InstallationTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Solution /&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=79aa9c74_002Df6c9_002D41a1_002Db831_002Df12fa9b0fe0d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ConfigureContextTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
@@ -51,7 +46,7 @@
 	
 	
 	
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=dae35f8a_002D7f65_002D4d78_002D9f0b_002D69cecd282895/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from &amp;lt;Tests&amp;gt;\&amp;lt;IdentityService.DataAccess.Database.Tests&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=dae35f8a_002D7f65_002D4d78_002D9f0b_002D69cecd282895/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from &amp;lt;Tests&amp;gt;\&amp;lt;IdentityService.DataAccess.Database.Tests&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;Or&gt;
     &lt;Project Location="/Users/edwardflores/Projects/Development/IdentitySolutions/IdentityService - Solutions and Test/IdentityService.DataAccess.Database.Tests" Presentation="&amp;lt;Tests&amp;gt;\&amp;lt;IdentityService.DataAccess.Database.Tests&amp;gt;" /&gt;
     &lt;ProjectFile&gt;D4D90D25-A437-47CD-B736-109A1395C56D/d:Services/d:Installation/f:IIdentityServiceInstallationLogicService_Tests.cs&lt;/ProjectFile&gt;
